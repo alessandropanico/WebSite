@@ -99,35 +99,53 @@ export class HeaderComponent {
   drawHighlight() {
     if (!this.canvasContext) return;
 
+    // Pulisce il canvas
     this.canvasContext.clearRect(0, 0, 800, 600);
 
-    // Crea il gradiente per l'effetto di evidenziazione
+    // Crea un gradiente con un azzurro più intenso
     const grH = this.canvasContext.createLinearGradient(0, 0, 600, 0);
     for (let i = 0; i < this.gradients.length; i++) {
-      grH.addColorStop(i / 10, `rgba(255,255,255,${this.gradients[i]})`);
+      grH.addColorStop(i / 10, `rgba(0, 191, 255, ${this.gradients[i]})`); // Azzurro più intenso
       if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
     }
 
     this.canvasContext.fillStyle = grH;
-    this.canvasContext.fillRect(0, this.offsetTop, 600, 10);
 
-    // Disegna le particelle
+    // Aumentiamo l'altezza del rettangolo per un effetto di luce più spessa
+    this.canvasContext.fillRect(0, this.offsetTop, 600, 20);
+
+    // Aumentiamo il numero di particelle
+    while (this.particles.length < 100) {  // Incrementa il numero massimo di particelle
+      this.particles.push(new Particle());
+    }
+
+    // Disegna le particelle con il nuovo colore e un movimento più fluido
     this.particles.forEach((particle, index) => {
       this.canvasContext.beginPath();
-      this.canvasContext.arc(particle.left, this.offsetTop + 15 + particle.top, particle.radius, 0, 2 * Math.PI);
-      this.canvasContext.fillStyle = `rgba(255,255,255,${particle.opacity})`;
+      this.canvasContext.arc(
+        particle.left,
+        this.offsetTop + 15 + particle.top,
+        particle.radius,
+        0,
+        2 * Math.PI
+      );
+      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${particle.opacity})`; // Colore azzurro più intenso
       this.canvasContext.fill();
 
+      // Aggiorna posizione e trasparenza delle particelle
       particle.left += particle.speed;
       particle.opacity -= particle.disintegrateRate;
 
+      // Ripristina le particelle se escono dal bordo o diventano invisibili
       if (particle.opacity < 0 || particle.left > 700) {
         this.particles[index] = new Particle();
       }
     });
 
+    // Ripeti l'animazione finché è attiva l'evidenziazione
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight());
   }
+
 }
 
 // Definizione della classe Particle
