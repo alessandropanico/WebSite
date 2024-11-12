@@ -14,20 +14,21 @@
 
       <!-- Menu items con binding Angular per mouseover -->
       <div class="italic highlight" (mouseover)="highlight($event)">
-        highlights
+        Home
       </div>
       <div class="italic" (mouseover)="highlight($event)">
-        play
+        Chi sono
       </div>
       <div class="italic" (mouseover)="highlight($event)">
-        training
+        Progetti
       </div>
       <div class="italic" (mouseover)="highlight($event)">
-        hero gallery
+        Contatti
       </div>
       <div class="italic" (mouseover)="highlight($event)">
         loot box
       </div>
+
       <div class="normal">
         SOCIAL
       </div>
@@ -42,22 +43,9 @@
       </div>
     </div>
 
-    <!-- Chat UI -->
-    <div id="chat">
-      <div id="chat-log">
-        <div class="message">[Genji]: I need healing!</div>
-      </div>
-      <div id="chat-input">
-        <div id="channel">[General]:</div>
-        <input id="text" type="text" [(ngModel)]="chatMessage" (keydown.enter)="sendMessage()" />
-      </div>
-      <div id="enter">
-        PRESS ENTER TO CHAT
-      </div>
-    </div>
-  </div>
 
-  <div id="player">
+
+  <!-- <div id="player">
     <div id="social">
       <img src="https://cdn.discordapp.com/attachments/303406782104207362/315772662989193216/social.png" alt="Social Icon" />
     </div>
@@ -66,7 +54,7 @@
       <div id="name">SUREFOURTEEN</div>
       <div id="rank">14</div>
     </div>
-  </div>
+  </div> -->
 
   <div id="hero">
     <div id="hero-name">TRACER</div>
