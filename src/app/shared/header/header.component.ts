@@ -99,52 +99,67 @@ export class HeaderComponent {
   drawHighlight() {
     if (!this.canvasContext) return;
 
-    // Pulisce il canvas
+    // Pulisci il canvas
     this.canvasContext.clearRect(0, 0, 800, 600);
 
-    // Crea un gradiente con un azzurro più intenso
+    // Crea il gradiente per l'effetto di evidenziazione
     const grH = this.canvasContext.createLinearGradient(0, 0, 600, 0);
     for (let i = 0; i < this.gradients.length; i++) {
-      grH.addColorStop(i / 10, `rgba(0, 191, 255, ${this.gradients[i]})`); // Azzurro più intenso
+      grH.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
       if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
     }
 
+    // Disegna la linea di evidenziazione più spessa
     this.canvasContext.fillStyle = grH;
+    this.canvasContext.fillRect(0, this.offsetTop, 600, 20);  // Larghezza linea aumentata a 20px
 
-    // Aumentiamo l'altezza del rettangolo per un effetto di luce più spessa
-    this.canvasContext.fillRect(0, this.offsetTop, 600, 20);
-
-    // Aumentiamo il numero di particelle
-    while (this.particles.length < 100) {  // Incrementa il numero massimo di particelle
-      this.particles.push(new Particle());
-    }
-
-    // Disegna le particelle con il nuovo colore e un movimento più fluido
+    // Crea e gestisci le particelle
     this.particles.forEach((particle, index) => {
+      // Se la particella non esiste, inizializzala direttamente come un oggetto con le proprietà
+      if (!particle) {
+        this.particles[index] = {
+          left: Math.random() * 600,                      // posizione orizzontale casuale
+          top: Math.random() * 10 - 5,                    // posizione verticale casuale
+          speed: Math.random() * 2 + 1,                   // velocità
+          opacity: Math.random() * 0.5 + 0.5,             // opacità iniziale
+          disintegrateRate: Math.random() * 0.02 + 0.01,  // velocità di dissolvenza
+          radius: Math.random() * 3 + 3                   // raggio tra 3 e 6 px
+        };
+      }
+
+      // Disegna la particella
       this.canvasContext.beginPath();
       this.canvasContext.arc(
-        particle.left,
-        this.offsetTop + 15 + particle.top,
-        particle.radius,
+        this.particles[index].left,
+        this.offsetTop + 15 + this.particles[index].top,
+        this.particles[index].radius,  // raggio più grande
         0,
         2 * Math.PI
       );
-      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${particle.opacity})`; // Colore azzurro più intenso
+      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${this.particles[index].opacity})`; // colore azzurro
       this.canvasContext.fill();
 
-      // Aggiorna posizione e trasparenza delle particelle
-      particle.left += particle.speed;
-      particle.opacity -= particle.disintegrateRate;
+      // Aggiorna la particella
+      this.particles[index].left += this.particles[index].speed;
+      this.particles[index].opacity -= this.particles[index].disintegrateRate;
 
-      // Ripristina le particelle se escono dal bordo o diventano invisibili
-      if (particle.opacity < 0 || particle.left > 700) {
-        this.particles[index] = new Particle();
+      // Se la particella esce dallo schermo o diventa trasparente, ricrea una nuova particella
+      if (this.particles[index].opacity < 0 || this.particles[index].left > 700) {
+        this.particles[index] = {
+          left: Math.random() * 600,
+          top: Math.random() * 10 - 5,
+          speed: Math.random() * 2 + 1,
+          opacity: Math.random() * 0.5 + 0.5,
+          disintegrateRate: Math.random() * 0.02 + 0.01,
+          radius: Math.random() * 3 + 3
+        };
       }
     });
 
-    // Ripeti l'animazione finché è attiva l'evidenziazione
+    // Continua l'animazione se l'evidenziazione è attiva
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight());
   }
+
 
 }
 
