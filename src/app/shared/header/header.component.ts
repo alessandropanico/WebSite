@@ -104,12 +104,44 @@ export class HeaderComponent {
 
     this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
 
+    // Se non c'è un highlight attivo, attiviamo il fascio di luce
     if (!this.isHighlightActive) {
       this.isHighlightActive = true;
       this.initParticles(target.offsetLeft + target.offsetWidth / 2, target.offsetTop + target.offsetHeight / 2); // Centra le particelle
       this.drawHighlight(target);  // Passa il target per il disegno della luce
     }
   }
+
+  // Aggiungi un evento per rimuovere il fascio di luce quando il mouse esce
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const menuItems = this.elRef.nativeElement.querySelectorAll('li div');
+
+    let isMouseOverMenuItem = false;
+
+    // Controlla se il mouse è sopra una voce del menu
+    menuItems.forEach((item: HTMLElement) => {
+      if (item.contains(target)) {
+        isMouseOverMenuItem = true;
+      }
+    });
+
+    // Se non c'è nessuna voce del menu su cui si sta passando, nascondi il fascio
+    if (!isMouseOverMenuItem) {
+      this.clearHighlight();  // Rimuovi il fascio di luce
+    }
+  }
+
+  // Funzione per rimuovere il fascio di luce
+  clearHighlight() {
+    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
+    if (this.canvasContext) {
+      this.canvasContext.clearRect(0, 0, canvas.width, canvas.height); // Pulisce completamente il canvas
+    }
+    this.isHighlightActive = false;  // Disabilita il fascio di luce
+  }
+
 
 
   drawHighlight(target: HTMLElement) {
