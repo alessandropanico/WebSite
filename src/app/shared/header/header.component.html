@@ -1,35 +1,50 @@
-
 <div id="main">
-    <div id="menus">
-      <!-- Canvas per l'effetto di evidenziazione -->
-      <canvas id="menu-highlight" width="auto" height="50vh"></canvas>
+  <div id="menus">
+    <!-- Canvas per l'effetto di evidenziazione -->
+    <canvas id="menu-highlight" width="auto" height="50vh"></canvas>
 
-      <!-- Menu items con binding Angular per mouseover -->
-      <ul>
-        <li>
-          <div class="italic highlight" (mouseover)="highlight($event)">
-            Home
-          </div>
-        </li>
-        <li>
-          <div class="italic" (mouseover)="highlight($event)">
-            Chi sono
-          </div>
-        </li>
-        <li>
-          <div class="italic" (mouseover)="highlight($event)">
-            Progetti
-          </div>
-        </li>
-        <li>
-          <div class="italic" (mouseover)="highlight($event)">
-            Contatti
-          </div>
-        </li>
-      </ul>
-
-    </div>
-
-
-
+    <!-- Menu items con binding Angular per mouseover -->
+    <ul>
+      <li>
+        <div
+          class="italic"
+          routerLink="/home"
+          routerLinkActive="highlight"
+          (mouseover)="highlight($event)"
+        >
+          Home
+        </div>
+      </li>
+      <li>
+        <div
+          class="italic"
+          routerLink="/chisono"
+          routerLinkActive="highlight"
+          (mouseover)="highlight($event)"
+        >
+          Chi sono
+        </div>
+      </li>
+      <li>
+        <div
+          class="italic"
+          routerLink="/progetti"
+          routerLinkActive="highlight"
+          (mouseover)="highlight($event)"
+        >
+          Progetti
+        </div>
+      </li>
+      <li>
+        <div
+          class="italic"
+          routerLink="/contatti"
+          routerLinkActive="highlight"
+          (mouseover)="highlight($event)"
+        >
+          Contatti
+        </div>
+      </li>
+    </ul>
   </div>
+</div>

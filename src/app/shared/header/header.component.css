@@ -53,6 +53,7 @@ padding: 0.3vw;
 
   .italic {
     position: relative;
+    cursor: pointer;
     left: 0;
     font-family: overwatch-italic;
     font-size: 40px;
