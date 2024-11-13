@@ -100,19 +100,24 @@ export class HeaderComponent {
     if (!this.isHighlightActive) {
       this.isHighlightActive = true;
       this.initParticles(target.offsetLeft, target.offsetTop); // Passa anche startY
-      this.drawHighlight();
+      this.drawHighlight(target);  // Passa il target per il disegno della luce
     }
   }
 
-  drawHighlight() {
+  drawHighlight(target: HTMLElement) {
     if (!this.canvasContext) return;
 
     this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
-    const gradient = this.canvasContext.createLinearGradient(0, 0, this.canvasContext.canvas.width, 0);
+    // Creazione di un gradiente radiale da centro verso l'esterno
+    const gradient = this.canvasContext.createRadialGradient(
+      target.offsetWidth / 2, target.offsetHeight / 2, 0,
+      target.offsetWidth / 2, target.offsetHeight / 2, target.offsetWidth / 2
+    );
+
     for (let i = 0; i < this.gradients.length; i++) {
       gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
-      if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
+      // if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
     }
 
     this.canvasContext.fillStyle = gradient;
@@ -144,7 +149,7 @@ export class HeaderComponent {
       }
     });
 
-    if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight());
+    if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
   }
 }
 

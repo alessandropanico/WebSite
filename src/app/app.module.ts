@@ -10,6 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ChisonoComponent } from './pagine/chisono/chisono.component';
 import { ProgettiComponent } from './pagine/progetti/progetti.component';
 import { ContattiComponent } from './pagine/contatti/contatti.component';
+import { ProvaComponent } from './shared/prova/prova.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ContattiComponent } from './pagine/contatti/contatti.component';
     ChisonoComponent,
     ProgettiComponent,
     ContattiComponent,
+    ProvaComponent,
 
   ],
   imports: [
