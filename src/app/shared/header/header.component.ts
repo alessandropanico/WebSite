@@ -120,25 +120,42 @@ export class HeaderComponent {
     const canvasWidth = this.canvasContext.canvas.width;
     const canvasHeight = this.canvasContext.canvas.height;
 
-    // Creazione di un gradiente radiale con dimensione fissa e centrato
+    // Creazione di un gradiente radiale con più bianco al centro
     const gradient = this.canvasContext.createRadialGradient(
-      canvasWidth / 2, canvasHeight / 2, 0,  // Centro del gradiente
-      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2 // Raggio del gradiente fisso
+      canvasWidth / 2, canvasHeight / 2, 0, // Centro del gradiente (bianco al centro)
+      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2 // Raggio del gradiente che si espande
     );
 
-    // Gestione della dissolvenza (solo una volta)
-    for (let i = 0; i < this.gradients.length; i++) {
-      gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
-    }
+    // Aggiungi un gradiente con più bianco nel centro e azzurro all'esterno
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');  // Bianco al centro
+    gradient.addColorStop(0.6, 'rgba(0, 191, 255, 0.5)'); // Azzurro al centro (meno intenso)
+    gradient.addColorStop(1, 'rgba(0, 191, 255, 0)');    // Azzurro sfumato all'esterno
 
     this.canvasContext.fillStyle = gradient;
-    this.canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
+
+    // Parametri per controllare la forma del rombo
+    const topHeight = canvasHeight / 4;  // Altezza della parte superiore
+    const bottomHeight = canvasHeight * 0.75; // Altezza della parte inferiore (la distanza tra sopra e sotto)
+    const width = canvasWidth * 0.5;  // Larghezza del rombo
+
+    // Disegno del fascio di luce (rombo stretto in verticale e largo)
+    this.canvasContext.beginPath();
+    this.canvasContext.moveTo(canvasWidth / 2, topHeight);  // Punto superiore
+    this.canvasContext.quadraticCurveTo(canvasWidth + width, canvasHeight / 2, canvasWidth / 2, bottomHeight); // Lato destro arrotondato
+    this.canvasContext.quadraticCurveTo(-width, canvasHeight / 2, canvasWidth / 2, topHeight); // Lato sinistro arrotondato
+    this.canvasContext.closePath();
+    this.canvasContext.fill();
 
     // Disegno delle particelle
     this.updateParticles(canvasWidth, canvasHeight);
 
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
   }
+
+
+
+
+
 
   // Funzione per aggiornare le particelle
   updateParticles(canvasWidth: number, canvasHeight: number) {
