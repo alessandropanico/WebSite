@@ -91,37 +91,48 @@ export class HeaderComponent {
     const target = event.target as HTMLElement;
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
 
-    canvas.width = target.offsetWidth;
-    canvas.height = target.offsetHeight;
-    canvas.style.left = `${target.offsetLeft}px`;
-    canvas.style.top = `${target.offsetTop}px`;
+    // Imposta la dimensione fissa per il canvas (la luce)
+    const fixedSize = 150; // Dimensione fissa della luce (puoi modificarla come preferisci)
+
+    // Usa una dimensione fissa per il canvas
+    canvas.width = fixedSize;
+    canvas.height = fixedSize;
+
+    // Centra il canvas rispetto alla voce del menù
+    canvas.style.left = `${target.offsetLeft + target.offsetWidth / 2 - fixedSize / 2}px`;
+    canvas.style.top = `${target.offsetTop + target.offsetHeight / 2 - fixedSize / 2}px`;
 
     this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
+
     if (!this.isHighlightActive) {
       this.isHighlightActive = true;
-      this.initParticles(target.offsetLeft, target.offsetTop); // Passa anche startY
+      this.initParticles(target.offsetLeft + target.offsetWidth / 2, target.offsetTop + target.offsetHeight / 2); // Centra le particelle
       this.drawHighlight(target);  // Passa il target per il disegno della luce
     }
   }
+
 
   drawHighlight(target: HTMLElement) {
     if (!this.canvasContext) return;
 
     this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
-    // Creazione di un gradiente radiale da centro verso l'esterno
+    const canvasWidth = this.canvasContext.canvas.width;
+    const canvasHeight = this.canvasContext.canvas.height;
+
+    // Creazione di un gradiente radiale con dimensione fissa e centrato
     const gradient = this.canvasContext.createRadialGradient(
-      target.offsetWidth / 2, target.offsetHeight / 2, 0,
-      target.offsetWidth / 2, target.offsetHeight / 2, target.offsetWidth / 2
+      canvasWidth / 2, canvasHeight / 2, 0,  // Centro del gradiente
+      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2 // Raggio del gradiente fisso
     );
 
     for (let i = 0; i < this.gradients.length; i++) {
       gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
-      // if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
+      if (this.gradients[i] > 0.1) this.gradients[i] -= 0.001;
     }
 
     this.canvasContext.fillStyle = gradient;
-    this.canvasContext.fillRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
+    this.canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
     this.particles.forEach((particle, index) => {
       particle.update(this.canvasContext.canvas.width, this.canvasContext.canvas.height);
@@ -151,6 +162,7 @@ export class HeaderComponent {
 
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
   }
+
 }
 
 // Classe Particle

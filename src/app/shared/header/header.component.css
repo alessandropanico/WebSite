@@ -62,18 +62,19 @@
     color: #fff;
     text-shadow: 0px 0px 3px #cecece;
     transform-origin: bottom;
-    transition: all .05s ease-in;
+    transition: none;  /* Rimuovi qualsiasi transizione */
     z-index: 9999;
+  }
+
+  .italic:hover {
+    /* Rimuovi il movimento e l'ingrandimento */
+    transform: none; /* Disabilita qualsiasi effetto di trasformazione */
+    text-shadow: 0px 0px 5px #bb7e29; /* Puoi mantenere il cambio di ombra del testo */
   }
 
   .italic.highlight {
     color: #f3c026;
     text-shadow: 0px 0px 5px #bb7e29;
-  }
-
-  .italic:hover {
-    left: 20px;
-    transform: scaleY(1.05);
   }
 
   .normal {
