@@ -37,11 +37,17 @@ export class HeaderComponent {
     const canvasWidth = canvas ? canvas.width : 0;
     const canvasHeight = canvas ? canvas.height : 0;
 
-    // Crea le particelle con la posizione passata
-    for (let i = 0; i < 10; i++) {
-      // Centriamo le particelle nel canvas e aumentiamo la loro dimensione
-      this.particles.push(new Particle(canvasWidth / 2, canvasHeight / 2, canvasWidth, canvasHeight));
-    }
+    // Crea una singola particella ogni 100ms (modifica questo valore a seconda dell'effetto desiderato)
+    const createParticleInterval = 100;
+
+    let particleCreationInterval = setInterval(() => {
+      if (this.particles.length < 20) { // Limita a 20 particelle per volta
+        // Crea una particella centrata nel canvas
+        this.particles.push(new Particle(canvasWidth / 2, canvasHeight / 2, canvasWidth, canvasHeight));
+      } else {
+        clearInterval(particleCreationInterval);  // Ferma la creazione delle particelle quando il limite è raggiunto
+      }
+    }, createParticleInterval);
   }
 
   // Attiva/disattiva la modalità chat con l'Enter
@@ -199,7 +205,7 @@ export class HeaderComponent {
       const y = particle.top;
       const size = particle.radius * 2;
 
-      // Disegna la particella con una forma personalizzata
+      // Disegna la particella
       this.canvasContext.beginPath();
       this.canvasContext.moveTo(x + 3, y); // angoli arrotondati
       this.canvasContext.lineTo(x + size - 3, y);
