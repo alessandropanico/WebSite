@@ -144,15 +144,30 @@ export class HeaderComponent {
     }
   }
 
+  setHighlight(target: HTMLElement) {
+    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
+
+    // Imposta l'opacità a 1 per far apparire il canvas con una dissolvenza
+    this.renderer.setStyle(canvas, 'opacity', '1');
+
+    this.isHighlightActive = true;
+    this.drawHighlight(target); // Passa 'target' a drawHighlight
+  }
+
+
   clearHighlight() {
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
 
-    // Riduce l'opacità gradualmente per ottenere un effetto dissolvenza
+    // Riduci l'opacità a 0 per far sparire il canvas con una dissolvenza
     this.renderer.setStyle(canvas, 'opacity', '0');
 
-    if (this.canvasContext) {
-      this.canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-    }
+    // Usa setTimeout per attendere il tempo della dissolvenza prima di cancellare il canvas
+    setTimeout(() => {
+      if (!this.isHighlightActive && this.canvasContext) {
+        this.canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }, 500); // Tempo in millisecondi della dissolvenza (0.5s in questo caso)
+
     this.isHighlightActive = false;
   }
 
