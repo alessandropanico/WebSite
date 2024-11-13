@@ -13,6 +13,7 @@ export class HeaderComponent {
   private gradients: number[] = [-1];
   private isHighlightActive = false;
   private particles: Particle[] = [];
+  private hasFaded: boolean = false;  // Traccia se la dissolvenza è avvenuta
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 
@@ -120,48 +121,50 @@ export class HeaderComponent {
     const canvasWidth = this.canvasContext.canvas.width;
     const canvasHeight = this.canvasContext.canvas.height;
 
-    // Creazione di un gradiente radiale con dimensione fissa e centrato
     const gradient = this.canvasContext.createRadialGradient(
-      canvasWidth / 2, canvasHeight / 2, 0,  // Centro del gradiente
-      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2 // Raggio del gradiente fisso
+      canvasWidth / 2, canvasHeight / 2, 0,
+      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2
     );
 
-    for (let i = 0; i < this.gradients.length; i++) {
-      gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
-      if (this.gradients[i] > 0.1) this.gradients[i] -= 0.001;
+    // Aggiungi il gradiente solo la prima volta
+    if (!this.hasFaded) {
+      for (let i = 0; i < this.gradients.length; i++) {
+        gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
+        if (this.gradients[i] > 0.1) this.gradients[i] -= 0.0005; // Riduci la dissolvenza una sola volta
+      }
+      this.hasFaded = true; // Segna come dissolvenza applicata
+    } else {
+      // Aggiungi il gradiente senza alterarlo ulteriormente
+      for (let i = 0; i < this.gradients.length; i++) {
+        gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
+      }
     }
 
     this.canvasContext.fillStyle = gradient;
     this.canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
+    // Disegno delle particelle
     this.particles.forEach((particle, index) => {
       particle.update(this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
       const x = particle.left;
       const y = particle.top;
       const size = particle.radius * 2;
-      const cornerRadius = 3;
 
       this.canvasContext.beginPath();
-      this.canvasContext.moveTo(x + cornerRadius, y);
-      this.canvasContext.lineTo(x + size - cornerRadius, y);
-      this.canvasContext.quadraticCurveTo(x + size, y, x + size, y + cornerRadius);
-      this.canvasContext.lineTo(x + size, y + size - cornerRadius);
-      this.canvasContext.quadraticCurveTo(x + size, y + size, x + size - cornerRadius, y + size);
-      this.canvasContext.lineTo(x + cornerRadius, y + size);
-      this.canvasContext.quadraticCurveTo(x, y + size, x, y + size - cornerRadius);
-      this.canvasContext.lineTo(x, y + cornerRadius);
-      this.canvasContext.quadraticCurveTo(x, y, x + cornerRadius, y);
+      this.canvasContext.arc(x, y, size, 0, Math.PI * 2);
       this.canvasContext.fillStyle = `rgba(0, 191, 255, ${particle.opacity})`;
       this.canvasContext.fill();
 
       if (particle.opacity <= 0 || particle.top > this.canvasContext.canvas.height) {
-        this.particles[index] = new Particle(this.canvasContext.canvas.width / 2, this.canvasContext.canvas.height / 2, this.canvasContext.canvas.width, this.canvasContext.canvas.height);  // Nuova particella centrata
+        this.particles[index] = new Particle(this.canvasContext.canvas.width / 2, this.canvasContext.canvas.height / 2, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
       }
     });
 
+    // Continua l'animazione se necessario
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
   }
+
 
 }
 
