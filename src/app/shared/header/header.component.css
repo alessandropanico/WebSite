@@ -52,8 +52,7 @@
 
 #menus {
   position: relative;
-  height: 500px;
-  margin-top: 50px;
+  height: auto;
   padding-left: 35px;
 
   .italic {
