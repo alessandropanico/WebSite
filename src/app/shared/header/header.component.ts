@@ -20,7 +20,7 @@ export class HeaderComponent {
     // Imposta il canvas context per il menu evidenziato
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
     this.canvasContext = canvas.getContext('2d');
-    this.initParticles();
+    this.initParticles(0, 0); // inizializza le particelle con una posizione di partenza
     this.playBackgroundAudio();
   }
 
@@ -32,9 +32,15 @@ export class HeaderComponent {
   }
 
   // Inizializza le particelle per l'animazione
-  initParticles() {
+  initParticles(startX: number, startY: number) {
+    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
+    const canvasWidth = canvas ? canvas.width : 0;
+    const canvasHeight = canvas ? canvas.height : 0;
+
+    // Crea le particelle con la posizione passata
     for (let i = 0; i < 10; i++) {
-      this.particles.push(new Particle());
+      // Centriamo le particelle nel canvas e aumentiamo la loro dimensione
+      this.particles.push(new Particle(canvasWidth / 2, canvasHeight / 2, canvasWidth, canvasHeight));
     }
   }
 
@@ -62,12 +68,10 @@ export class HeaderComponent {
   sendMessage() {
     const chatLog = this.elRef.nativeElement.querySelector('#chat-log');
     if (this.chatMessage.trim()) {
-      // Aggiunge il messaggio dell'utente
       const message = this.renderer.createElement('div');
       this.renderer.setProperty(message, 'innerHTML', `[SureFourteen]: ${this.chatMessage}`);
       this.renderer.appendChild(chatLog, message);
 
-      // Risposta automatica se il messaggio è "no u"
       if (this.chatMessage.trim().toLowerCase() === 'no u') {
         const genjiMessage = this.renderer.createElement('div');
         this.renderer.setProperty(genjiMessage, 'innerHTML', '[Genji]: Understandable, have a nice day');
@@ -78,7 +82,6 @@ export class HeaderComponent {
     this.chatMessage = '';
     this.isChatActive = false;
 
-    // Ripristina lo stato di visualizzazione della chat
     this.renderer.removeClass(this.elRef.nativeElement.querySelector('#chat-log'), 'active');
     this.renderer.removeClass(this.elRef.nativeElement.querySelector('#chat-input'), 'active');
     this.renderer.setStyle(this.elRef.nativeElement.querySelector('#enter'), 'display', 'flex');
@@ -88,44 +91,36 @@ export class HeaderComponent {
     const target = event.target as HTMLElement;
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
 
-    // Imposta la larghezza e altezza del canvas esattamente uguale alla voce
     canvas.width = target.offsetWidth;
     canvas.height = target.offsetHeight;
-
-    // Posiziona il canvas sopra la voce di menu, mantenendo la luce sotto il testo
     canvas.style.left = `${target.offsetLeft}px`;
     canvas.style.top = `${target.offsetTop}px`;
 
-    // Reimposta le sfumature e attiva l'animazione
     this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
     if (!this.isHighlightActive) {
       this.isHighlightActive = true;
+      this.initParticles(target.offsetLeft, target.offsetTop); // Passa anche startY
       this.drawHighlight();
     }
   }
 
-
-
-  // Disegna l'animazione di evidenziazione
   drawHighlight() {
     if (!this.canvasContext) return;
 
-    // Pulisci il canvas
     this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
-    // Crea il gradiente per l'effetto di evidenziazione
     const gradient = this.canvasContext.createLinearGradient(0, 0, this.canvasContext.canvas.width, 0);
     for (let i = 0; i < this.gradients.length; i++) {
       gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
       if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
     }
 
-    // Disegna la linea di evidenziazione sopra lo sfondo della voce di menu
     this.canvasContext.fillStyle = gradient;
     this.canvasContext.fillRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
-    // Disegna le particelle
     this.particles.forEach((particle, index) => {
+      particle.update(this.canvasContext.canvas.width, this.canvasContext.canvas.height);
+
       const x = particle.left;
       const y = particle.top;
       const size = particle.radius * 2;
@@ -144,40 +139,49 @@ export class HeaderComponent {
       this.canvasContext.fillStyle = `rgba(0, 191, 255, ${particle.opacity})`;
       this.canvasContext.fill();
 
-      // Aggiorna le proprietà della particella
-      particle.left += particle.speed;
-      particle.opacity -= particle.disintegrateRate;
-
-      // Reset delle particelle
-      if (particle.opacity < 0 || particle.left > this.canvasContext.canvas.width) {
-        this.particles[index] = new Particle();
+      if (particle.opacity <= 0 || particle.top > this.canvasContext.canvas.height) {
+        this.particles[index] = new Particle(this.canvasContext.canvas.width / 2, this.canvasContext.canvas.height / 2, this.canvasContext.canvas.width, this.canvasContext.canvas.height);  // Nuova particella centrata
       }
     });
 
-    // Continua l'animazione
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight());
   }
-
-
-
-
 }
 
-// Definizione della classe Particle
+// Classe Particle
 class Particle {
   radius: number;
   top: number;
   left: number;
-  speed: number;
+  speedY: number;
+  speedX: number;
   opacity: number;
   disintegrateRate: number;
 
-  constructor() {
-    this.radius = Math.random() * 1 + 0.5;
-    this.top = Math.random() * 20 - 20;
-    this.left = Math.random() * 100;
-    this.speed = 1 / this.radius;
+  constructor(startX: number, startY: number, canvasWidth: number, canvasHeight: number) {
+    this.radius = Math.random() * 3 + 2;  // Aumentato il raggio per renderle più grandi
+    this.left = startX;
+    this.top = startY;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.5;
     this.opacity = 1;
     this.disintegrateRate = Math.random() * 0.005 + 0.001;
+  }
+
+  update(canvasWidth: number, canvasHeight: number) {
+    this.top += this.speedY;
+    this.left += this.speedX;
+
+    if (this.left < 0 || this.left > canvasWidth) {
+      this.speedX *= -1;
+    }
+
+    this.opacity -= this.disintegrateRate;
+
+    if (this.opacity <= 0) {
+      this.top = Math.random() * 20 - 10;
+      this.left = canvasWidth / 2;
+      this.opacity = 1;
+    }
   }
 }
