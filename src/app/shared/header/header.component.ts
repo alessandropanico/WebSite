@@ -127,26 +127,35 @@ export class HeaderComponent {
     const target = event.target as HTMLElement;
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
 
-    // Imposta la dimensione fissa per il canvas (la luce)
-    const fixedSize = 150; // Dimensione fissa della luce (puoi modificarla come preferisci)
-
-    // Usa una dimensione fissa per il canvas
+    // Dimensioni e posizione del canvas per il fascio di luce
+    const fixedSize = 150;
     canvas.width = fixedSize;
     canvas.height = fixedSize;
-
-    // Centra il canvas rispetto alla voce del menù
     canvas.style.left = `${target.offsetLeft + target.offsetWidth / 2 - fixedSize / 2}px`;
     canvas.style.top = `${target.offsetTop + target.offsetHeight / 2 - fixedSize / 2}px`;
 
-    this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
+    // Aumenta l'opacità gradualmente per far apparire il fascio di luce
+    this.renderer.setStyle(canvas, 'opacity', '1');
 
-    // Se non c'è un highlight attivo, attiviamo il fascio di luce
     if (!this.isHighlightActive) {
       this.isHighlightActive = true;
-      this.initParticles(target.offsetLeft + target.offsetWidth / 2, target.offsetTop + target.offsetHeight / 2); // Centra le particelle
-      this.drawHighlight(target);  // Passa il target per il disegno della luce
+      this.initParticles(target.offsetLeft + target.offsetWidth / 2, target.offsetTop + target.offsetHeight / 2);
+      this.drawHighlight(target); // Chiama il metodo di disegno
     }
   }
+
+  clearHighlight() {
+    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
+
+    // Riduce l'opacità gradualmente per ottenere un effetto dissolvenza
+    this.renderer.setStyle(canvas, 'opacity', '0');
+
+    if (this.canvasContext) {
+      this.canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    this.isHighlightActive = false;
+  }
+
 
   // Aggiungi un evento per rimuovere il fascio di luce quando il mouse esce
   @HostListener('document:mousemove', ['$event'])
@@ -169,14 +178,7 @@ export class HeaderComponent {
     }
   }
 
-  // Funzione per rimuovere il fascio di luce
-  clearHighlight() {
-    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
-    if (this.canvasContext) {
-      this.canvasContext.clearRect(0, 0, canvas.width, canvas.height); // Pulisce completamente il canvas
-    }
-    this.isHighlightActive = false;  // Disabilita il fascio di luce
-  }
+
 
 
 

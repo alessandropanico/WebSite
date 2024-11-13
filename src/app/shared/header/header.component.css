@@ -101,6 +101,8 @@ padding: 0.5vw;
   position: absolute;
   z-index: 1;
   pointer-events: none;
+  opacity: 0; /* Imposta l'opacità iniziale a 0 */
+  transition: opacity 1s ease; /* Aggiungi una transizione lenta su opacity */
 }
 
 
