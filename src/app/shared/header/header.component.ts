@@ -88,13 +88,13 @@ export class HeaderComponent {
     const target = event.target as HTMLElement;
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
 
-    // Ottieni la larghezza e la posizione orizzontale dell'elemento di menu
+    // Imposta la larghezza e altezza del canvas esattamente uguale alla voce
     canvas.width = target.offsetWidth;
-    this.offsetTop = target.offsetTop + target.offsetHeight;  // Posizione appena sotto la voce
+    canvas.height = target.offsetHeight;
 
-    // Posiziona il canvas in base alla voce di menu attiva
+    // Posiziona il canvas sopra la voce di menu, mantenendo la luce sotto il testo
     canvas.style.left = `${target.offsetLeft}px`;
-    canvas.style.top = `${this.offsetTop}px`;
+    canvas.style.top = `${target.offsetTop}px`;
 
     // Reimposta le sfumature e attiva l'animazione
     this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
@@ -103,6 +103,7 @@ export class HeaderComponent {
       this.drawHighlight();
     }
   }
+
 
 
   // Disegna l'animazione di evidenziazione
@@ -119,14 +120,14 @@ export class HeaderComponent {
       if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
     }
 
-    // Disegna la linea di evidenziazione
+    // Disegna la linea di evidenziazione sopra lo sfondo della voce di menu
     this.canvasContext.fillStyle = gradient;
-    this.canvasContext.fillRect(0, 0, this.canvasContext.canvas.width, 20);
+    this.canvasContext.fillRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
     // Disegna le particelle
     this.particles.forEach((particle, index) => {
       const x = particle.left;
-      const y = 15 + particle.top;
+      const y = particle.top;
       const size = particle.radius * 2;
       const cornerRadius = 3;
 
@@ -147,15 +148,16 @@ export class HeaderComponent {
       particle.left += particle.speed;
       particle.opacity -= particle.disintegrateRate;
 
-      // Se la particella esce dai limiti o diventa trasparente, resetta la particella
+      // Reset delle particelle
       if (particle.opacity < 0 || particle.left > this.canvasContext.canvas.width) {
         this.particles[index] = new Particle();
       }
     });
 
-    // Continua l'animazione se l'evidenziazione è attiva
+    // Continua l'animazione
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight());
   }
+
 
 
 
