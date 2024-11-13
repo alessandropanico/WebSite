@@ -200,42 +200,37 @@ export class HeaderComponent {
   drawHighlight(target: HTMLElement) {
     if (!this.canvasContext) return;
 
+    // Pulisce il canvas prima di disegnare
     this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
     const canvasWidth = this.canvasContext.canvas.width;
     const canvasHeight = this.canvasContext.canvas.height;
 
-    // Creazione di un gradiente radiale con più bianco al centro
-    const gradient = this.canvasContext.createRadialGradient(
-      canvasWidth / 2, canvasHeight / 2, 0, // Centro del gradiente (bianco al centro)
-      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2 // Raggio del gradiente che si espande
-    );
+    // Creazione di un gradiente lineare che va dal bianco al centro con azzurro ai bordi e dissolvenza
+    const gradient = this.canvasContext.createLinearGradient(-canvasWidth, canvasHeight / 2, canvasWidth * 2, canvasHeight / 2);
 
-    // Aggiungi un gradiente con più bianco nel centro e azzurro all'esterno
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');  // Bianco al centro
-    gradient.addColorStop(0.6, 'rgba(0, 191, 255, 0.5)'); // Azzurro al centro (meno intenso)
-    gradient.addColorStop(1, 'rgba(0, 191, 255, 0)');    // Azzurro sfumato all'esterno
+    // Aggiungi gradiente con bianco al centro, azzurro ai bordi e dissolvenza alle estremità
+    gradient.addColorStop(0, 'rgba(0, 191, 255, 0)');      // Dissolvenza invisibile a sinistra
+    gradient.addColorStop(0.4, 'rgba(0, 191, 255, 0.7)');  // Azzurro al bordo sinistro
+    gradient.addColorStop(0.5, 'rgba(255, 255, 255, 1)');  // Bianco al centro
+    gradient.addColorStop(0.6, 'rgba(0, 191, 255, 0.7)');  // Azzurro al bordo destro
+    gradient.addColorStop(1, 'rgba(0, 191, 255, 0)');      // Dissolvenza invisibile a destra
 
     this.canvasContext.fillStyle = gradient;
 
-    // Parametri per controllare la forma del rombo
-    const topHeight = canvasHeight / 4;  // Altezza della parte superiore
-    const bottomHeight = canvasHeight * 0.75; // Altezza della parte inferiore (la distanza tra sopra e sotto)
-    const width = canvasWidth * 0.5;  // Larghezza del rombo
+    // Disegna la linea rettangolare spessa e lunga (più lunga e spessa)
+    const lineHeight = 20;  // Altezza della linea, modificabile per aumentarne lo spessore
+    const extendedWidth = canvasWidth * 2; // Lunghezza della linea aumentata (due volte la larghezza del canvas)
+    this.canvasContext.fillRect((canvasWidth - extendedWidth) / 2, canvasHeight / 2 - lineHeight / 2, extendedWidth, lineHeight);
 
-    // Disegno del fascio di luce (rombo stretto in verticale e largo)
-    this.canvasContext.beginPath();
-    this.canvasContext.moveTo(canvasWidth / 2, topHeight);  // Punto superiore
-    this.canvasContext.quadraticCurveTo(canvasWidth + width, canvasHeight / 2, canvasWidth / 2, bottomHeight); // Lato destro arrotondato
-    this.canvasContext.quadraticCurveTo(-width, canvasHeight / 2, canvasWidth / 2, topHeight); // Lato sinistro arrotondato
-    this.canvasContext.closePath();
-    this.canvasContext.fill();
-
-    // Disegno delle particelle
+    // Disegno delle particelle (continua come prima)
     this.updateParticles(canvasWidth, canvasHeight);
 
+    // Continuare a disegnare finché il mouse è sopra
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
   }
+
+
 
 
   // Funzione per aggiornare le particelle
