@@ -14,7 +14,7 @@ export class HeaderComponent {
   private isHighlightActive = false;
   private particles: Particle[] = [];
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     // Imposta il canvas context per il menu evidenziato
@@ -127,17 +127,28 @@ export class HeaderComponent {
         };
       }
 
-      // Disegna la particella
+      // Disegna la particella come un quadrato con bordi arrotondati
       this.canvasContext.beginPath();
-      this.canvasContext.arc(
-        this.particles[index].left,
-        this.offsetTop + 15 + this.particles[index].top,
-        this.particles[index].radius,  // raggio più grande
-        0,
-        2 * Math.PI
-      );
-      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${this.particles[index].opacity})`; // colore azzurro
+      const x = this.particles[index].left;
+      const y = this.offsetTop + 15 + this.particles[index].top;
+      const size = this.particles[index].radius * 2; // Usa `radius` per impostare la dimensione del lato del quadrato
+      const cornerRadius = 3; // Definisci un raggio per i bordi arrotondati
+
+      // Disegna un rettangolo con bordi arrotondati
+      this.canvasContext.moveTo(x + cornerRadius, y);
+      this.canvasContext.lineTo(x + size - cornerRadius, y);
+      this.canvasContext.quadraticCurveTo(x + size, y, x + size, y + cornerRadius);
+      this.canvasContext.lineTo(x + size, y + size - cornerRadius);
+      this.canvasContext.quadraticCurveTo(x + size, y + size, x + size - cornerRadius, y + size);
+      this.canvasContext.lineTo(x + cornerRadius, y + size);
+      this.canvasContext.quadraticCurveTo(x, y + size, x, y + size - cornerRadius);
+      this.canvasContext.lineTo(x, y + cornerRadius);
+      this.canvasContext.quadraticCurveTo(x, y, x + cornerRadius, y);
+
+      // Riempie il rettangolo con colore e trasparenza
+      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${this.particles[index].opacity})`;
       this.canvasContext.fill();
+
 
       // Aggiorna la particella
       this.particles[index].left += this.particles[index].speed;
