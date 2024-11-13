@@ -19,8 +19,13 @@
 
 
 #main {
-
-  background-color: black;
+background-color: black;
+margin-top: 2vh;
+width: 99%;
+margin-left: 0.5vw;
+border-radius: 0.5vw;
+height: 10vh;
+padding: 0.3vw;
 }
 
 
