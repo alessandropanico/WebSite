@@ -194,9 +194,6 @@ export class HeaderComponent {
   }
 
 
-
-
-
   drawHighlight(target: HTMLElement) {
     if (!this.canvasContext) return;
 
