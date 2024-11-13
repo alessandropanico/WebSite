@@ -86,55 +86,51 @@ export class HeaderComponent {
 
   highlight(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    this.offsetTop = target.offsetTop + 25;
-    this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
+    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
 
+    // Ottieni la larghezza e la posizione orizzontale dell'elemento di menu
+    canvas.width = target.offsetWidth;
+    this.offsetTop = target.offsetTop + target.offsetHeight;  // Posizione appena sotto la voce
+
+    // Posiziona il canvas in base alla voce di menu attiva
+    canvas.style.left = `${target.offsetLeft}px`;
+    canvas.style.top = `${this.offsetTop}px`;
+
+    // Reimposta le sfumature e attiva l'animazione
+    this.gradients = [1, 1, 0.9, 0.7, 0.6, 0.5, 0.5, 0.4, 0.3, 0];
     if (!this.isHighlightActive) {
       this.isHighlightActive = true;
       this.drawHighlight();
     }
   }
 
+
   // Disegna l'animazione di evidenziazione
   drawHighlight() {
     if (!this.canvasContext) return;
 
     // Pulisci il canvas
-    this.canvasContext.clearRect(0, 0, 800, 600);
+    this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
 
     // Crea il gradiente per l'effetto di evidenziazione
-    const grH = this.canvasContext.createLinearGradient(0, 0, 600, 0);
+    const gradient = this.canvasContext.createLinearGradient(0, 0, this.canvasContext.canvas.width, 0);
     for (let i = 0; i < this.gradients.length; i++) {
-      grH.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
+      gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
       if (this.gradients[i] > 0.1) this.gradients[i] -= 0.01;
     }
 
-    // Disegna la linea di evidenziazione più spessa
-    this.canvasContext.fillStyle = grH;
-    this.canvasContext.fillRect(0, this.offsetTop, 600, 20);  // Larghezza linea aumentata a 20px
+    // Disegna la linea di evidenziazione
+    this.canvasContext.fillStyle = gradient;
+    this.canvasContext.fillRect(0, 0, this.canvasContext.canvas.width, 20);
 
-    // Crea e gestisci le particelle
+    // Disegna le particelle
     this.particles.forEach((particle, index) => {
-      // Se la particella non esiste, inizializzala direttamente come un oggetto con le proprietà
-      if (!particle) {
-        this.particles[index] = {
-          left: Math.random() * 600,                      // posizione orizzontale casuale
-          top: Math.random() * 10 - 5,                    // posizione verticale casuale
-          speed: Math.random() * 2 + 1,                   // velocità
-          opacity: Math.random() * 0.5 + 0.5,             // opacità iniziale
-          disintegrateRate: Math.random() * 0.02 + 0.01,  // velocità di dissolvenza
-          radius: Math.random() * 3 + 3                   // raggio tra 3 e 6 px
-        };
-      }
+      const x = particle.left;
+      const y = 15 + particle.top;
+      const size = particle.radius * 2;
+      const cornerRadius = 3;
 
-      // Disegna la particella come un quadrato con bordi arrotondati
       this.canvasContext.beginPath();
-      const x = this.particles[index].left;
-      const y = this.offsetTop + 15 + this.particles[index].top;
-      const size = this.particles[index].radius * 2; // Usa `radius` per impostare la dimensione del lato del quadrato
-      const cornerRadius = 3; // Definisci un raggio per i bordi arrotondati
-
-      // Disegna un rettangolo con bordi arrotondati
       this.canvasContext.moveTo(x + cornerRadius, y);
       this.canvasContext.lineTo(x + size - cornerRadius, y);
       this.canvasContext.quadraticCurveTo(x + size, y, x + size, y + cornerRadius);
@@ -144,32 +140,23 @@ export class HeaderComponent {
       this.canvasContext.quadraticCurveTo(x, y + size, x, y + size - cornerRadius);
       this.canvasContext.lineTo(x, y + cornerRadius);
       this.canvasContext.quadraticCurveTo(x, y, x + cornerRadius, y);
-
-      // Riempie il rettangolo con colore e trasparenza
-      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${this.particles[index].opacity})`;
+      this.canvasContext.fillStyle = `rgba(0, 191, 255, ${particle.opacity})`;
       this.canvasContext.fill();
 
+      // Aggiorna le proprietà della particella
+      particle.left += particle.speed;
+      particle.opacity -= particle.disintegrateRate;
 
-      // Aggiorna la particella
-      this.particles[index].left += this.particles[index].speed;
-      this.particles[index].opacity -= this.particles[index].disintegrateRate;
-
-      // Se la particella esce dallo schermo o diventa trasparente, ricrea una nuova particella
-      if (this.particles[index].opacity < 0 || this.particles[index].left > 700) {
-        this.particles[index] = {
-          left: Math.random() * 600,
-          top: Math.random() * 10 - 5,
-          speed: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.5,
-          disintegrateRate: Math.random() * 0.02 + 0.01,
-          radius: Math.random() * 3 + 3
-        };
+      // Se la particella esce dai limiti o diventa trasparente, resetta la particella
+      if (particle.opacity < 0 || particle.left > this.canvasContext.canvas.width) {
+        this.particles[index] = new Particle();
       }
     });
 
     // Continua l'animazione se l'evidenziazione è attiva
     if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight());
   }
+
 
 
 }
