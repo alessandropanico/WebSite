@@ -13,7 +13,6 @@ export class HeaderComponent {
   private gradients: number[] = [-1];
   private isHighlightActive = false;
   private particles: Particle[] = [];
-  private hasFaded: boolean = false;  // Traccia se la dissolvenza è avvenuta
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 
@@ -121,50 +120,57 @@ export class HeaderComponent {
     const canvasWidth = this.canvasContext.canvas.width;
     const canvasHeight = this.canvasContext.canvas.height;
 
+    // Creazione di un gradiente radiale con dimensione fissa e centrato
     const gradient = this.canvasContext.createRadialGradient(
-      canvasWidth / 2, canvasHeight / 2, 0,
-      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2
+      canvasWidth / 2, canvasHeight / 2, 0,  // Centro del gradiente
+      canvasWidth / 2, canvasHeight / 2, canvasWidth / 2 // Raggio del gradiente fisso
     );
 
-    // Aggiungi il gradiente solo la prima volta
-    if (!this.hasFaded) {
-      for (let i = 0; i < this.gradients.length; i++) {
-        gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
-        if (this.gradients[i] > 0.1) this.gradients[i] -= 0.0005; // Riduci la dissolvenza una sola volta
-      }
-      this.hasFaded = true; // Segna come dissolvenza applicata
-    } else {
-      // Aggiungi il gradiente senza alterarlo ulteriormente
-      for (let i = 0; i < this.gradients.length; i++) {
-        gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
-      }
+    // Gestione della dissolvenza (solo una volta)
+    for (let i = 0; i < this.gradients.length; i++) {
+      gradient.addColorStop(i / 10, `rgba(0,191,255,${this.gradients[i]})`);
     }
 
     this.canvasContext.fillStyle = gradient;
     this.canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
     // Disegno delle particelle
+    this.updateParticles(canvasWidth, canvasHeight);
+
+    if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
+  }
+
+  // Funzione per aggiornare le particelle
+  updateParticles(canvasWidth: number, canvasHeight: number) {
     this.particles.forEach((particle, index) => {
-      particle.update(this.canvasContext.canvas.width, this.canvasContext.canvas.height);
+      // Aggiorna la posizione della particella
+      particle.update(canvasWidth, canvasHeight);
 
       const x = particle.left;
       const y = particle.top;
       const size = particle.radius * 2;
 
+      // Disegna la particella con una forma personalizzata
       this.canvasContext.beginPath();
-      this.canvasContext.arc(x, y, size, 0, Math.PI * 2);
+      this.canvasContext.moveTo(x + 3, y); // angoli arrotondati
+      this.canvasContext.lineTo(x + size - 3, y);
+      this.canvasContext.quadraticCurveTo(x + size, y, x + size, y + 3);
+      this.canvasContext.lineTo(x + size, y + size - 3);
+      this.canvasContext.quadraticCurveTo(x + size, y + size, x + size - 3, y + size);
+      this.canvasContext.lineTo(x + 3, y + size);
+      this.canvasContext.quadraticCurveTo(x, y + size, x, y + size - 3);
+      this.canvasContext.lineTo(x, y + 3);
+      this.canvasContext.quadraticCurveTo(x, y, x + 3, y);
+
       this.canvasContext.fillStyle = `rgba(0, 191, 255, ${particle.opacity})`;
       this.canvasContext.fill();
 
-      if (particle.opacity <= 0 || particle.top > this.canvasContext.canvas.height) {
-        this.particles[index] = new Particle(this.canvasContext.canvas.width / 2, this.canvasContext.canvas.height / 2, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
+      // Se la particella è fuori dai confini, la rimettiamo al centro
+      if (particle.opacity <= 0 || particle.top > canvasHeight || particle.left < 0 || particle.left > canvasWidth) {
+        this.particles[index] = new Particle(canvasWidth / 2, canvasHeight / 2, canvasWidth, canvasHeight);  // Nuova particella centrata
       }
     });
-
-    // Continua l'animazione se necessario
-    if (this.isHighlightActive) requestAnimationFrame(() => this.drawHighlight(target));
   }
-
 
 }
 
@@ -188,20 +194,21 @@ class Particle {
     this.disintegrateRate = Math.random() * 0.005 + 0.001;
   }
 
+  // Funzione per aggiornare la particella
   update(canvasWidth: number, canvasHeight: number) {
     this.top += this.speedY;
     this.left += this.speedX;
 
+    // Gestisce il rimbalzo dai bordi
     if (this.left < 0 || this.left > canvasWidth) {
-      this.speedX *= -1;
+      this.speedX *= -1; // Inverti la direzione
     }
 
+    if (this.top < 0 || this.top > canvasHeight) {
+      this.speedY *= -1; // Inverti la direzione
+    }
+
+    // Gestisce la dissolvenza
     this.opacity -= this.disintegrateRate;
-
-    if (this.opacity <= 0) {
-      this.top = Math.random() * 20 - 10;
-      this.left = canvasWidth / 2;
-      this.opacity = 1;
-    }
   }
 }
