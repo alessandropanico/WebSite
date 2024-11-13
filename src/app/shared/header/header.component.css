@@ -266,3 +266,9 @@ video#bgvid {
 ::-webkit-scrollbar-thumb        { display: none; }
 ::-webkit-scrollbar-corner       { display: none; }
 ::-webkit-resizer                { display: none; }
+
+
+li
+{
+  list-style: none;
+}
