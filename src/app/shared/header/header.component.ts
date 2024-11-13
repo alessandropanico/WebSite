@@ -19,23 +19,23 @@ export class HeaderComponent {
   constructor(private elRef: ElementRef, private renderer: Renderer2, private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
-    ngOnInit(): void {
-      // Imposta il canvas context per il menu evidenziato
-      const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
-      this.canvasContext = canvas.getContext('2d');
-      this.initParticles(0, 0); // inizializza le particelle con una posizione di partenza
-      this.playBackgroundAudio();
+  ngOnInit(): void {
+    // Imposta il canvas context per il menu evidenziato
+    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
+    this.canvasContext = canvas.getContext('2d');
+    this.initParticles(0, 0); // inizializza le particelle con una posizione di partenza
+    this.playBackgroundAudio();
 
-      // Aggiungi sottoscrizione al router per aggiornare l'elemento 'highlight' quando cambia l'URL
-      this.router.events
-        .pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe(() => {
-          this.updateMenuHighlight();
-        });
+    // Aggiungi sottoscrizione al router per aggiornare l'elemento 'highlight' quando cambia l'URL
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.updateMenuHighlight();
+      });
 
-      // Esegui la funzione iniziale per applicare il 'highlight' corretto
-      this.updateMenuHighlight();
-    }
+    // Esegui la funzione iniziale per applicare il 'highlight' corretto
+    this.updateMenuHighlight();
+  }
 
 
   // Funzione per applicare l'evidenziazione al menu in base all'URL corrente
