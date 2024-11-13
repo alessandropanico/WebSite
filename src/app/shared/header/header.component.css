@@ -273,7 +273,11 @@ li
 
 }
 
-ul{
+ul {
   display: flex;
   align-items: center;
+  gap: 20px; /* Spazio tra le voci */
 }
+
+
+
