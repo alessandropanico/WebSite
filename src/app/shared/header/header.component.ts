@@ -80,49 +80,7 @@ export class HeaderComponent {
     }, createParticleInterval);
   }
 
-  // Attiva/disattiva la modalità chat con l'Enter
-  @HostListener('document:keydown.enter', ['$event'])
-  handleEnterKey(event: KeyboardEvent) {
-    if (this.isChatActive) {
-      this.sendMessage();
-    } else {
-      this.activateChat();
-    }
-  }
-
-  activateChat() {
-    this.isChatActive = true;
-    this.renderer.addClass(this.elRef.nativeElement.querySelector('#chat-log'), 'active');
-    this.renderer.addClass(this.elRef.nativeElement.querySelector('#chat-input'), 'active');
-    this.renderer.setStyle(this.elRef.nativeElement.querySelector('#enter'), 'display', 'none');
-    setTimeout(() => {
-      const chatInput = this.elRef.nativeElement.querySelector('#text') as HTMLInputElement;
-      chatInput.focus();
-    });
-  }
-
-  sendMessage() {
-    const chatLog = this.elRef.nativeElement.querySelector('#chat-log');
-    if (this.chatMessage.trim()) {
-      const message = this.renderer.createElement('div');
-      this.renderer.setProperty(message, 'innerHTML', `[SureFourteen]: ${this.chatMessage}`);
-      this.renderer.appendChild(chatLog, message);
-
-      if (this.chatMessage.trim().toLowerCase() === 'no u') {
-        const genjiMessage = this.renderer.createElement('div');
-        this.renderer.setProperty(genjiMessage, 'innerHTML', '[Genji]: Understandable, have a nice day');
-        this.renderer.setStyle(genjiMessage, 'color', 'rgb(255, 66, 66)');
-        this.renderer.appendChild(chatLog, genjiMessage);
-      }
-    }
-    this.chatMessage = '';
-    this.isChatActive = false;
-
-    this.renderer.removeClass(this.elRef.nativeElement.querySelector('#chat-log'), 'active');
-    this.renderer.removeClass(this.elRef.nativeElement.querySelector('#chat-input'), 'active');
-    this.renderer.setStyle(this.elRef.nativeElement.querySelector('#enter'), 'display', 'flex');
-  }
-
+ 
   highlight(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
