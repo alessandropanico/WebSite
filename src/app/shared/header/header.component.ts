@@ -191,10 +191,6 @@ export class HeaderComponent {
   }
 
 
-
-
-
-
   // Funzione per aggiornare le particelle
   updateParticles(canvasWidth: number, canvasHeight: number) {
     this.particles.forEach((particle, index) => {
