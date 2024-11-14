@@ -3,3 +3,30 @@
 body{
   background-color: rgb(127, 127, 127);
 }
+
+@font-face {
+  font-family: akira;
+  src: url(assets/FONT/AKIRA/Akira\ Expanded\ Demo.otf);
+}
+
+@font-face {
+  font-family: overwatch;
+  src: url(https://us.battle.net/forums/static/fonts/f014015d/f014015d.woff);
+}
+
+@font-face {
+  font-family: overwatch-italic;
+  src: url(https://us.battle.net/forums/static/fonts/bignoodletoo/bignoodletoo.woff);
+}
+
+.titolo{
+  font-size: 4vw;
+  font-family: akira;
+  text-align: center;
+  color:black;
+  line-height: 1;
+}
+
+.spazio{
+  margin-top: 15vh;
+}

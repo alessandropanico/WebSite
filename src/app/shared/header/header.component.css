@@ -18,13 +18,15 @@
 
 
 #main {
-background-color: black;
+background-color: rgb(4, 4, 4);
 margin-top: 2vh;
 width: 99%;
 margin-left: 0.5vw;
 border-radius: 0.5vw;
 height: 10vh;
 padding: 0.5vw;
+/* backdrop-filter: blur(7px); */
+
 }
 
 
