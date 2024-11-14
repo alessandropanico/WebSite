@@ -91,12 +91,12 @@
     color: #e3f2ff;
     text-shadow: 0 0 2px #336cec;
     transform-origin: bottom;
-    transition: all .05s ease-in;
+    transition: none;
+    /* transition: all .05s ease-in; */
   }
 
   .normal:hover {
-    left: 6px;
-    transform: scaleY(1.1);
+    transform: none;
     color: #fff;
   }
 }
@@ -122,4 +122,25 @@ ul {
   align-items: center;
   gap: 5%;
   /* Spazio tra le voci */
+}
+
+.contSocial{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  gap: 15%;
+  margin-right: 5vw;
+  margin-top: 1vh;
+}
+
+.fa-brands{
+  font-size: 2vw;
+  cursor: pointer;
+
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
 }
