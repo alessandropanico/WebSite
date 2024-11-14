@@ -19,6 +19,11 @@ body{
   src: url(https://us.battle.net/forums/static/fonts/bignoodletoo/bignoodletoo.woff);
 }
 
+@font-face {
+  font-family: overwatch2;
+  src: url(assets/FONT/Overwatch/big_noodle_titling.ttf);
+}
+
 .titolo{
   font-size: 5vw;
   font-family: akira;

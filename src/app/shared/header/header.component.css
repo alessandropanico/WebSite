@@ -59,7 +59,8 @@
     position: relative;
     cursor: pointer;
     left: 0;
-    font-family: overwatch-italic;
+    font-family: overwatch2;
+    font-style: italic;
     font-size: 40px;
     color: #fff;
     text-shadow: 0px 0px 3px #cecece;
