@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 body{
-  background-color: rgb(127, 127, 127);
+  background-color: rgb(255, 255, 255);
 }
 
 @font-face {
@@ -28,5 +28,9 @@ body{
 }
 
 .spazio{
-  margin-top: 15vh;
+  margin-top: 20vh;
+}
+
+.spazio2{
+  margin-top: 10vh;
 }
