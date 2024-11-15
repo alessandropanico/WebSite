@@ -29,6 +29,7 @@
   backdrop-filter: blur(7px); /* Effetto sfocatura */
   position: fixed;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Optional: aggiunge un'ombra per l'effetto "frosted glass" */
+  z-index: 9999;
 }
 
 
