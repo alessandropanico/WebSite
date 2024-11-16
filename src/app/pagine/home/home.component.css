@@ -12,7 +12,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover; /* Copre l'intera area senza distorsioni */
-  z-index: -1; /* Assicura che il video stia dietro il contenuto */
+  z-index: -2; /* Assicura che il video stia dietro il contenuto */
 }
 
 .video-overlay {
@@ -22,5 +22,5 @@
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.582); /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
-  z-index: 0; /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
+  z-index: -1; /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
 }
