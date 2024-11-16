@@ -34,7 +34,7 @@ body{
 }
 
 .titolo2{
-  font-size: 3vw;
+  font-size: 4vw;
   font-family: overwatch2;
   text-align: center;
   color: white;
@@ -46,7 +46,7 @@ body{
 
 .testo{
   color: white;
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   text-align: center;
 }
 
@@ -54,7 +54,7 @@ body{
 /*----------------------------*/
 
 .spazio{
-  margin-top: 20vh;
+  margin-top: 30vh;
 }
 
 .spazio2{
