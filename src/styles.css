@@ -88,10 +88,12 @@ body{
   top: 50%;
   left: 0;
   width: 100%;
-  height: 6px; /* Altezza del bagliore */
-  background: linear-gradient(to right, transparent, rgba(243, 192, 38, 0.8), transparent);
-  filter: blur(4px); /* Effetto di sfocatura per bagliore morbido */
+  height: 10px; /* Altezza maggiore per il bagliore */
+  background: linear-gradient(to right, transparent, rgba(243, 192, 38, 1), transparent);
+  filter: blur(6px); /* Maggiore sfocatura per un bagliore più evidente */
+  opacity: 0.8; /* Rende il bagliore più visibile */
   transform: translateY(-50%); /* Centra il bagliore */
   z-index: -1; /* Posiziona il bagliore sotto la linea */
 }
+
 
