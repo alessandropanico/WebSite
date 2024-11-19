@@ -39,14 +39,17 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
-        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: 'YouTube', description: 'Scopri i migliori prodotti naturali per la tua bellezza.' },
-        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: "L'obbiettivo", description: 'Prodotti di alta qualità consegnati ogni giorno.' },
-        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice', description: 'Consegna immediata di prodotti freschi.' },
+        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: 'YouTube',
+          description: 'Scopri il mio canale Youtube se sei un nerd! Iscriviti e aiutami! In futuro potrei aprirne anche altri!' },
+        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: "L'obbiettivo",
+          description: 'Ciò che voglio è poter migliorare il più possibile! Poter migliorare! Vieni a vedere!' },
+        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice',
+           description: 'Justice è un opera che si basa su me stesso. Io, Dio, la mia vita intera. Una opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo' },
       ];
 
 
