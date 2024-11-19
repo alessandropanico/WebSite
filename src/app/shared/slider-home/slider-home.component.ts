@@ -44,9 +44,9 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
-        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Frutta e verdura', description: 'Get instant delivery' },
-        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: 'Beauty al naturale', description: 'Delivered daily' },
         { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: 'Beauty al naturale', description: 'Delivered daily' },
+        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: 'Beauty al naturale', description: 'Delivered daily' },
+        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Frutta e verdura', description: 'Get instant delivery' },
 
       ];
 
