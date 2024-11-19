@@ -49,7 +49,7 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
         { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: "L'obbiettivo",
           description: 'Ciò che voglio è poter migliorare e portare/avere più argomenti possibili ed interessanti! Vieni a vedere!' },
         { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice',
-           description: 'Justice è un opera che si basa su me stesso. Io, Dio, la intera vita. Una opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo' },
+           description: 'Justice è un opera che si basa su me stesso. Io, Dio, la intera vita. Una opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.' },
       ];
 
 
