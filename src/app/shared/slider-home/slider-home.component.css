@@ -17,7 +17,7 @@ swiper-slide {
 
   /* Assicurati che l'immagine occupi tutto lo spazio */
   .mio {
-    width: 70%;
+    width: 60%;
     height: auto;
     object-fit: cover; /* Mantiene le proporzioni dell'immagine */
     cursor: pointer;
