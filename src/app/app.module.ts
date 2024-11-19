@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { ChisonoComponent } from './pagine/chisono/chisono.component';
 import { ProgettiComponent } from './pagine/progetti/progetti.component';
 import { ContattiComponent } from './pagine/contatti/contatti.component';
 import { ProvaComponent } from './shared/prova/prova.component';
+import { SliderHomeComponent } from './shared/slider-home/slider-home.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProvaComponent } from './shared/prova/prova.component';
     ProgettiComponent,
     ContattiComponent,
     ProvaComponent,
+    SliderHomeComponent,
 
   ],
   imports: [
@@ -32,6 +34,9 @@ import { ProvaComponent } from './shared/prova/prova.component';
   providers: [
     provideClientHydration()
   ],
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Aggiungi questa riga
+
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

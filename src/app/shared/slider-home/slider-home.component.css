@@ -1,0 +1,74 @@
+.contPers {
+  width: 90%;
+  margin: 1vw auto;
+  height: auto;
+  text-align: left;
+  position: relative;
+  margin-top: 2.784vh;
+  margin-bottom: 3vh;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 24px;
+  border-radius: 24px;
+  position: relative;
+  width: 100% !important; /* Assicura che la larghezza sia il 100% */
+
+  /* Assicurati che l'immagine occupi tutto lo spazio */
+  .mio {
+    width: 70%;
+    height: auto;
+    object-fit: cover; /* Mantiene le proporzioni dell'immagine */
+    cursor: pointer;
+  }
+
+  .cont {
+    flex-direction: column;
+    display: flex;
+    margin-top: -19vh;
+    margin-left: 4vw;
+    position: absolute;
+    width: 50%; /* Larghezza del contenitore di testo */
+  }
+
+  .title-color {
+    color: black;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .content-color {
+    font-size: 1.2em;
+    color: gray;
+    margin-top: -0.7vh;
+  }
+
+  .btn-solid {
+    text-align: center !important;
+    width: 31vw;
+    margin-top: -1vh;
+  }
+}
+
+.title-black {
+  color: black; /* Colore del titolo nero */
+  font-weight: bold;
+}
+
+.title-white {
+  color: white; /* Colore del titolo bianco */
+  font-weight: bold;
+
+}
+
+
+.btn-red {
+  background-color: #A70909; /* Colore rosso */
+  color: white; /* Testo bianco */
+}
+
+.btn-white {
+  background-color: white; /* Colore bianco */
+  color: black; /* Testo nero */
+}

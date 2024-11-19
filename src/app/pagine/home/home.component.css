@@ -24,3 +24,9 @@
   background: rgba(0, 0, 0, 0.582); /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
   z-index: -1; /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
 }
+
+.sliderSection{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

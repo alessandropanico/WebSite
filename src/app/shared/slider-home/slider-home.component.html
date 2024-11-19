@@ -1,0 +1,19 @@
+<div *ngIf="isSwiperActive && slides.length > 0" class="contPers">
+  <swiper-container [breakpoints]="breakpoints"
+  [autoplay]="autoplay"
+  [loop]="loop"
+  [loop-additional-slides]="2"
+  [navigation]="true"
+  [ngStyle]="{
+    '--swiper-navigation-color': '#f06414',
+    '--swiper-navigation-size': '5vw',
+    '--swiper-navigation-left': '2vw',
+    '--swiper-navigation-right': '2vw',
+    '--swiper-navigation-sides-offset': '2vw'
+  }"
+    autoplay="false">
+    <swiper-slide *ngFor="let slide of slides; let i = index">
+      <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText">
+    </swiper-slide>
+  </swiper-container>
+</div>
