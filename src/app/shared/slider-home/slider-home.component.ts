@@ -44,11 +44,11 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
-        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: 'Beauty al naturale', description: 'Delivered daily' },
-        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: 'Beauty al naturale', description: 'Delivered daily' },
-        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Frutta e verdura', description: 'Get instant delivery' },
-
+        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: 'YouTube', description: 'Scopri i migliori prodotti naturali per la tua bellezza.' },
+        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: "L'obbiettivo", description: 'Prodotti di alta qualità consegnati ogni giorno.' },
+        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice', description: 'Consegna immediata di prodotti freschi.' },
       ];
+
 
       // Inizializza gli slides
       this.slides = [...originalSlides, ...originalSlides, ...originalSlides];

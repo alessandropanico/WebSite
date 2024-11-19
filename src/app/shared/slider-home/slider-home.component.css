@@ -72,3 +72,22 @@ swiper-slide {
   background-color: white; /* Colore bianco */
   color: black; /* Testo nero */
 }
+
+/*---------------------------*/
+
+.text-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.slide-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+}
+
+.slide-description {
+  font-size: 1.2em;
+  color: gray;
+  margin-top: 5px;
+}
