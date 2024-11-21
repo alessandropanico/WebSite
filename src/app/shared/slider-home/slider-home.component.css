@@ -17,7 +17,7 @@ swiper-slide {
 
   /* Assicurati che l'immagine occupi tutto lo spazio */
   .mio {
-    width: 60%;
+    width: 65%;
     height: auto;
     object-fit: cover; /* Mantiene le proporzioni dell'immagine */
     cursor: pointer;
@@ -78,19 +78,19 @@ swiper-slide {
 .text-container {
   text-align: left;
   margin-top: 2vh;
-  width: 62%;
+  width: 67%;
 
 }
 
 .slide-title {
   font-size: 3vw;
-  color: black;
+  color: rgb(255, 255, 255);
   font-family: overwatch2;
   font-style: italic;
 }
 
 .slide-description {
   font-size: 1vw;
-  color: rgb(3, 3, 3);
+  color: rgb(255, 255, 255);
   text-align: justify;
 }
