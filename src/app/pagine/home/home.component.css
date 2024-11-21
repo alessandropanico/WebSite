@@ -38,6 +38,9 @@ h1{
 .sliderSection {
   background-image: url("/assets/immaginiHome/1.jpg");
   background-size: cover;
+  background-color: rgba(76, 76, 76, 0.5); /* Colore bianco semi-trasparente */
+  background-blend-mode: lighten; /* Schiarisce l'immagine */
   width: 100%;
 }
+
 
