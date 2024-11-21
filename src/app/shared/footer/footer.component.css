@@ -9,14 +9,27 @@
 }
 
 .sfondo::before {
+  /* Oscura lo sfondo */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Oscura lo sfondo con trasparenza */
+  z-index: 1; /* Dietro al bordo luminoso */
+}
+
+.sfondo::after {
+  /* Effetto bordo luminoso */
   content: "";
   position: absolute;
   top: 0; /* Posizionato in alto */
   left: 0;
   width: 100%;
   height: 1vh; /* Altezza del bordo luminoso */
-  background: #f3c026; /* Colore pieno ma meno invadente */
+  background: #f3c026; /* Colore luminoso */
   box-shadow: 0 0 8px 2px #f3c026; /* Bagliore leggero */
-  opacity: 0.8; /* Riduce l'intensità visiva */
-  z-index: 2; /* Sopra lo sfondo */
+  opacity: 0.8; /* Intensità moderata */
+  z-index: 2; /* Sopra lo sfondo scuro */
 }
