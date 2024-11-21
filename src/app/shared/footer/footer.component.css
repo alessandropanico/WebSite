@@ -5,17 +5,18 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 50vh;
+  border-top: none; /* Rimuovi il bordo nativo */
 }
 
-footer::before {
+.sfondo::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 0; /* Posizionato in alto */
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Oscura lo sfondo */
-  z-index: 1;
+  height: 1vh; /* Altezza del bordo luminoso */
+  background: #f3c026; /* Colore pieno ma meno invadente */
+  box-shadow: 0 0 8px 2px #f3c026; /* Bagliore leggero */
+  opacity: 0.8; /* Riduce l'intensità visiva */
+  z-index: 2; /* Sopra lo sfondo */
 }
-
-
