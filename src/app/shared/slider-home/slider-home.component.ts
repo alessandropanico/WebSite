@@ -20,7 +20,7 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   spaceBetween = 15;
   loop = true;
   autoplay = {
-    delay: 1500,
+    delay: 2000,
     disableOnInteraction: false
   };
   breakpoints = {
