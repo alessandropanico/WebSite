@@ -44,10 +44,10 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
-        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: 'YouTube',
+        { imgSrc: 'assets/immaginiSliderHome/programmazione.jpg', altText: 'Slide 2', title: 'Web Developer',
+          description: 'Sono un web developer ed amo il mio lavoro! Ti serve un sito? Vieni a vedere cosa ti offro ;)' },
+        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: "Un nerd!",
           description: 'Scopri il mio canale Youtube se sei un nerd! Iscriviti e aiutami! In futuro potrei aprirne anche altri!' },
-        { imgSrc: 'assets/immaginiSliderHome/power.jpg', altText: 'Slide 2', title: "L'obiettivo",
-          description: 'Ciò che voglio è poter migliorare e portare/avere più argomenti possibili ed interessanti! Vieni a vedere!' },
         { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice',
            description: 'Justice è un opera che si basa su me stesso. Io, Dio, la intera vita. Una opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.' },
       ];
