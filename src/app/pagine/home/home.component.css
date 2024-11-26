@@ -5,6 +5,12 @@
   overflow: hidden;
 }
 
+.sfondo2{
+  position: relative;
+  width: 100%;
+  overflow: hidden
+}
+
 .video-background {
   position: absolute;
   top: 0;
@@ -36,7 +42,7 @@ h1{
 }
 
 .sliderSection {
-  background-image: url("/assets/immaginiHome/1.jpg");
+  background-image: url("/assets/immaginiHome/2.jpg");
   background-size: cover;
   background-color: rgba(76, 76, 76, 0.5); /* Colore bianco semi-trasparente */
   background-blend-mode: lighten; /* Schiarisce l'immagine */
@@ -44,3 +50,9 @@ h1{
 }
 
 
+.vieniAconoscermi
+{
+  background-color: gray;
+  width: 100%;
+  height: auto;
+}

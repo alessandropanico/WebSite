@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{
+body {
   background-color: rgb(255, 255, 255);
 }
 
@@ -24,16 +24,16 @@ body{
   src: url(assets/FONT/Overwatch/big_noodle_titling.ttf);
 }
 
-.titolo{
+.titolo {
   font-size: 4vw;
   font-family: akira;
   text-align: center;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   line-height: 1;
   z-index: 10;
 }
 
-.titolo2{
+.titolo2 {
   font-size: 4vw;
   font-family: overwatch2;
   text-align: center;
@@ -43,7 +43,7 @@ body{
   font-style: italic;
 }
 
-.titolo3{
+.titolo3 {
   font-size: 4vw;
   font-family: overwatch2;
   text-align: center;
@@ -52,9 +52,10 @@ body{
   z-index: 10;
   font-style: italic;
 }
+
 /*----------------------------*/
 
-.testo{
+.testo {
   color: white;
   font-size: 1.2vw;
   text-align: center;
@@ -63,15 +64,15 @@ body{
 
 /*----------------------------*/
 
-.spazio{
+.spazio {
   margin-top: 30vh;
 }
 
-.spazio2{
+.spazio2 {
   margin-top: 10vh;
 }
 
-.spazio3{
+.spazio3 {
   margin-top: 5vh;
 }
 
@@ -79,10 +80,14 @@ body{
 .divider {
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, transparent, #f3c026, transparent); /* Gradiente originale */
-  margin: 20px 0; /* Margine sopra e sotto */
-  position: relative; /* Per posizionare l'effetto luminoso */
-  z-index: 2; /* Assicurati che sia sopra */
+  background: linear-gradient(to right, transparent, #f3c026, transparent);
+  /* Gradiente originale */
+  margin: 20px 0;
+  /* Margine sopra e sotto */
+  position: relative;
+  /* Per posizionare l'effetto luminoso */
+  z-index: 2;
+  /* Assicurati che sia sopra */
 
 }
 
@@ -92,12 +97,42 @@ body{
   top: 50%;
   left: 0;
   width: 100%;
-  height: 10px; /* Altezza maggiore per il bagliore */
+  height: 10px;
+  /* Altezza maggiore per il bagliore */
   background: linear-gradient(to right, transparent, rgba(243, 192, 38, 1), transparent);
-  filter: blur(6px); /* Maggiore sfocatura per un bagliore più evidente */
-  opacity: 0.8; /* Rende il bagliore più visibile */
-  transform: translateY(-50%); /* Centra il bagliore */
-  z-index: -1; /* Posiziona il bagliore sotto la linea */
+  filter: blur(6px);
+  /* Maggiore sfocatura per un bagliore più evidente */
+  opacity: 0.8;
+  /* Rende il bagliore più visibile */
+  transform: translateY(-50%);
+  /* Centra il bagliore */
+  z-index: -1;
+  /* Posiziona il bagliore sotto la linea */
+}
+/*--------------------------------------*/
+
+.myButton {
+  background-image: linear-gradient(to right, #C02425 0%, #F0CB35 51%, #C02425 100%);
+  border:none;
+  font-family: overwatch2;
+
+
 }
 
+.myButton {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  display: block;
+  font-size: 3vw;
+}
 
+.myButton:hover {
+  background-position: right center;
+  color: #ffffff;
+  text-decoration: none;
+}
