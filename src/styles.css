@@ -128,11 +128,13 @@ body {
   background-size: 200% auto;
   color: white;
   display: block;
-  font-size: 3vw;
+  font-size: 2.8vw;
 }
 
 .myButton:hover {
   background-position: right center;
   color: #ffffff;
   text-decoration: none;
+  border:none;
+
 }
