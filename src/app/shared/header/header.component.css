@@ -153,10 +153,12 @@ a {
 .contLogo {
   background-color: rgb(240, 100, 20);
   position: absolute;
-  margin-left: -2.55vw;
+  /* margin-left: -2.55vw; */
   height: 9.99vh;
-  margin-top: -0.17vh;
+  /* margin-top: -0.17vh; */
   width: 7vw;
+  left: -0.5vw;
+  top: -0.5vw;
   border-top-left-radius: 0.5vw;
   border-bottom-left-radius: 0.5vw;
   align-items: center;
