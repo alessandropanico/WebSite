@@ -147,8 +147,12 @@ a{
   cursor: pointer;
 }
 
+.contLogo{
+  background-color: red;
+}
 
 .logo{
-  width: 50px;
+  width: 5vw;
   height: auto;
 }
+
