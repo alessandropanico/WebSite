@@ -163,6 +163,7 @@ a {
   border-bottom-left-radius: 0.5vw;
   align-items: center;
   display: flex;
+  justify-content: center;
 }
 
 .logo {
