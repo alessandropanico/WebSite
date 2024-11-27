@@ -29,7 +29,7 @@
   backdrop-filter: blur(10px);
   /* Effetto sfocatura */
   position: fixed;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0.3vw 0.4vw rgba(0, 0, 0, 0.5);
   /* Optional: aggiunge un'ombra per l'effetto "frosted glass" */
   z-index: 9999;
 }
@@ -44,12 +44,6 @@
 
 
 
-  #version {
-    position: absolute;
-    bottom: 6px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: overwatch;
-  }
 }
 
 #menus {
@@ -76,13 +70,13 @@
     /* Rimuovi il movimento e l'ingrandimento */
     transform: none;
     /* Disabilita qualsiasi effetto di trasformazione */
-    text-shadow: 0px 0px 5px #bb7e29;
+    text-shadow: 0px 0px 0.5vw #bb7e29;
     /* Puoi mantenere il cambio di ombra del testo */
   }
 
   .italic.highlight {
     color: #f3c026;
-    text-shadow: 0px 0px 5px #bb7e29;
+    text-shadow: 0px 0px 0.5vw #bb7e29;
 
   }
 
@@ -93,7 +87,7 @@
     font-family: overwatch;
     font-size: 24px;
     color: #e3f2ff;
-    text-shadow: 0 0 2px #336cec;
+    text-shadow: 0 0 0.3vw #336cec;
     transform-origin: bottom;
     transition: none;
     /* transition: all .05s ease-in; */
@@ -142,7 +136,6 @@ ul {
 .fa-brands {
   font-size: 2vw;
   cursor: pointer;
-
 }
 
 a {
@@ -171,6 +164,6 @@ a {
   height: auto;
 }
 
-.voce{
+.voce {
   margin-left: 7.5vw;
 }
