@@ -167,3 +167,14 @@ a {
 .voce {
   margin-left: 7.5vw;
 }
+
+
+.sectionLanguage{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  gap: 15%;
+  margin-right: 5vw;
+  margin-top: 1vh;
+}
