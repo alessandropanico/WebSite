@@ -53,6 +53,15 @@ body {
   font-style: italic;
 }
 
+.nome{
+  font-size: 1.2vw;
+  font-family: "Poppins",Helvetica,Arial,sans-serif,"Microsoft YaHei";
+  line-height: 1;
+  z-index: 9999;
+  color: white;
+  position: relative;
+}
+
 /*----------------------------*/
 
 .testo {
@@ -70,11 +79,13 @@ body {
 
 .spazio2 {
   margin-top: 10vh;
+
 }
 
 .spazio3 {
   margin-top: 5vh;
 }
+
 
 /*----------------------------*/
 .divider {
@@ -137,4 +148,22 @@ body {
   text-decoration: none;
   border:none;
 
+}
+
+.normal {
+  position: relative;
+  left: 0;
+  line-height: 1.7;
+  font-family: overwatch;
+  font-size: 24px;
+  color: #e3f2ff;
+  text-shadow: 0 0 0.3vw #336cec;
+  transform-origin: bottom;
+  transition: none;
+  /* transition: all .05s ease-in; */
+}
+
+.normal:hover {
+  transform: none;
+  color: #fff;
 }
