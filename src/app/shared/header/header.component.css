@@ -182,7 +182,7 @@ a {
 }
 
 .flag {
-  width: 3vw;
+  width: 4vw;
   height: auto;
   cursor: pointer;
 }
@@ -219,9 +219,6 @@ a {
   background-color: #797979;
 } */
 
-.dropdown-flag {
-  max-width: 100%;
-  height: auto;
-}
+
 
 
