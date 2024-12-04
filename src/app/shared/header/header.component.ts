@@ -80,7 +80,7 @@ export class HeaderComponent {
     }, createParticleInterval);
   }
 
- 
+
   highlight(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
@@ -218,6 +218,33 @@ export class HeaderComponent {
         this.particles[index] = new Particle(canvasWidth / 2, canvasHeight / 2, canvasWidth, canvasHeight);  // Nuova particella centrata
       }
     });
+  }
+
+  //------------------------------------
+// Bandiera selezionata di default
+selectedFlag = 'it'; // Bandiera italiana di default
+  allFlags = ['it', 'us']; // Tutte le bandiere disponibili
+  isDropdownVisible = false;
+  hideTimeout: any; // Timer per il debounce
+
+  get flags(): string[] {
+    return this.allFlags.filter(flag => flag !== this.selectedFlag);
+  }
+
+  showDropdown() {
+    clearTimeout(this.hideTimeout); // Annulla il timeout di chiusura
+    this.isDropdownVisible = true;
+  }
+
+  hideDropdown() {
+    this.hideTimeout = setTimeout(() => {
+      this.isDropdownVisible = false;
+    }, 100); // Ritardo di chiusura
+  }
+
+  selectFlag(flag: string) {
+    this.selectedFlag = flag;
+    this.isDropdownVisible = false; // Chiude immediatamente il menu
   }
 
 }

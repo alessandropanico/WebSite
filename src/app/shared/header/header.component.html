@@ -46,14 +46,25 @@
             class="fa-brands fa-linkedin"></i></a>
       </div> -->
 
+      <section class="sectionLanguage" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+        <!-- Bandiera principale -->
+        <img src="assets/icons/flag/{{ selectedFlag }}.svg" class="flag main-flag">
 
-      <section class="sectionLanguage">
-
-        <div>
-          
+        <!-- Menu a tendina -->
+        <div class="dropdownMenu" *ngIf="isDropdownVisible">
+          <div
+            class="dropdownItem"
+            *ngFor="let flag of flags"
+            (click)="selectFlag(flag)">
+            <img src="assets/icons/flag/{{ flag }}.svg" class="flag dropdown-flag">
+          </div>
         </div>
-
       </section>
+
+
+
+
+
 
     </ul>
 
