@@ -27,7 +27,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.582); /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
+  background: rgba(0, 0, 0, 0.588); /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
   z-index: -1; /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
 }
 
