@@ -221,9 +221,9 @@ export class HeaderComponent {
   }
 
   //------------------------------------
-// Bandiera selezionata di default
-selectedFlag = 'it'; // Bandiera italiana di default
-  allFlags = ['it', 'us']; // Tutte le bandiere disponibili
+  // Bandiera selezionata di default
+  selectedFlag = 'it'; // Bandiera italiana di default
+  allFlags = ['it', 'en']; // Tutte le bandiere disponibili
   isDropdownVisible = false;
   hideTimeout: any; // Timer per il debounce
 

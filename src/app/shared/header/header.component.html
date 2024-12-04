@@ -47,16 +47,14 @@
       </div> -->
 
       <section class="sectionLanguage" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
-        <!-- Bandiera principale -->
-        <img src="assets/icons/flag/{{ selectedFlag }}.svg" class="flag main-flag">
+        <img src="assets/icons/flag/{{ selectedFlag }}.jpg" class="flag main-flag">
 
-        <!-- Menu a tendina -->
         <div class="dropdownMenu" *ngIf="isDropdownVisible">
           <div
             class="dropdownItem"
             *ngFor="let flag of flags"
             (click)="selectFlag(flag)">
-            <img src="assets/icons/flag/{{ flag }}.svg" class="flag dropdown-flag">
+            <img src="assets/icons/flag/{{ flag }}.jpg" class="flag dropdown-flag">
           </div>
         </div>
       </section>
