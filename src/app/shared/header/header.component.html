@@ -1,4 +1,4 @@
-  <section class="desktop">
+<section class="desktop">
   <div id="main">
     <div id="menus">
 
@@ -62,38 +62,40 @@
 
 <section class="mobile">
   <div id="main">
+    <div id="menus">
 
-    <div class="contHamburger">
-    <!-- Hamburger Menu -->
-    <div class="hamburger" (click)="toggleMenu()">
-      <i class="fa-solid fa-bars"></i>
+      <div class="contHamburger">
+        <!-- Hamburger Menu -->
+        <div class="hamburger" (click)="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <!-- Logo -->
+        <img src="assets/immaginiGenerali/nakamalogo.png" class="mobilelogo">
+
+      </div>
+
+
+
+
+
+      <!-- Sidebar Menu -->
+      <div class="sidebar" [class.active]="isMenuOpen" (click)="$event.stopPropagation()">
+        <div class="sidebarContent">
+          <ul>
+            <li><a class="italic" routerLink="/home">Home</a></li>
+            <li><a class="italic" routerLink="/chisono">Chi sono</a></li>
+            <li><a class="italic" routerLink="/progetti">Progetti</a></li>
+            <li><a class="italic" routerLink="/contatti">Contatti</a></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Logo -->
-      <img src="assets/immaginiGenerali/nakamalogo.png" class="logo">
 
   </div>
-
-  <!-- Sidebar Menu -->
-  <div class="sidebar" [class.active]="isMenuOpen" (click)="$event.stopPropagation()">
-    <div class="sidebarContent">
-      <ul>
-        <li><a routerLink="/home" routerLinkActive="highlight">Home</a></li>
-        <li><a routerLink="/chisono" routerLinkActive="highlight">Chi sono</a></li>
-        <li><a routerLink="/progetti" routerLinkActive="highlight">Progetti</a></li>
-        <li><a routerLink="/contatti" routerLinkActive="highlight">Contatti</a></li>
-      </ul>
-    </div>
-  </div>
-
-  </div>
-
-
-
-
 
 
 
 </section>
-
-
