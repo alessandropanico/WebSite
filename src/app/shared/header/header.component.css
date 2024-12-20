@@ -178,8 +178,10 @@ a {
   margin-right: 5vw;
   flex-direction: column;
   background-color: rgb(0 0 0 / 83%);
-
 }
+
+
+
 
 .flag {
   width: 4vw;
@@ -219,6 +221,12 @@ a {
   background-color: #797979;
 } */
 
+.contArrow{
+  display: flex;
+  align-items: center;
+}
 
-
-
+.fa-angle-down{
+  color: white;
+  margin-left: 0.5vw;
+}
