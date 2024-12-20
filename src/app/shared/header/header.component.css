@@ -253,6 +253,14 @@ a {
     display:none;
   }
 
+  #main{
+    height: 8vh;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 2.5vw;
+  }
+
 /* Sidebar Menu */
 .sidebar {
   position: fixed;
@@ -280,11 +288,15 @@ a {
   color: white;
 }
 
-/* Stile del logo */
-.mobileLogo {
+
+.logo{
+  width: 10vw;
+}
+
+.contHamburger{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* Contenuto del menu */
