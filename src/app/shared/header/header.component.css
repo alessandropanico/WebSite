@@ -221,12 +221,15 @@ a {
   background-color: #797979;
 } */
 
-.contArrow{
+.contArrow {
   display: flex;
   align-items: center;
 }
 
-.fa-angle-down{
+.fa-angle-down {
   color: white;
   margin-left: 0.5vw;
 }
+
+
+/*------------------------------------------------*/

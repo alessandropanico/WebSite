@@ -1,75 +1,60 @@
-<div id="main">
-  <div id="menus">
+  <div id="main">
+    <div id="menus">
 
 
-    <!-- Canvas per l'effetto di evidenziazione -->
-    <canvas id="menu-highlight" width="auto" height="50vh"></canvas>
+      <!-- Canvas per l'effetto di evidenziazione -->
+      <canvas id="menu-highlight" width="auto" height="50vh"></canvas>
 
 
 
-    <ul>
-      <div class="contLogo">
-        <img src="assets/immaginiGenerali/nakamalogo.png" class="logo">
-      </div>
-
-      <li>
-        <div class="italic voce" routerLink="/home" routerLinkActive="highlight" (mouseover)="highlight($event)">
-          Home
-        </div>
-      </li>
-      <li>
-        <div class="italic" routerLink="/chisono" routerLinkActive="highlight" (mouseover)="highlight($event)">
-          Chi sono
-        </div>
-      </li>
-      <li>
-        <div class="italic" routerLink="/progetti" routerLinkActive="highlight" (mouseover)="highlight($event)">
-          Progetti
-        </div>
-      </li>
-      <li>
-        <div class="italic" routerLink="/contatti" routerLinkActive="highlight" (mouseover)="highlight($event)">
-          Contatti
-        </div>
-      </li>
-
-
-      <!--Social-->
-      <!-- <div class="contSocial">
-        <a class="normal" target="_blank" href="https://www.instagram.com/_nakamayt/"><i
-            class="fa-brands fa-instagram"></i></a>
-        <a class="normal" target="_blank" href="https://www.youtube.com/channel/UC8rQxh_mjGtKiBQJkixhYGQ"><i
-            class="fa-brands fa-youtube"></i></a>
-        <a class="normal" target="_blank" href="https://www.facebook.com/alessandro.panico.397/?locale=it_IT"><i
-            class="fa-brands fa-facebook"></i></a>
-        <a class="normal" target="_blank" href="https://www.linkedin.com/in/alessandro-panico-4b974b272/"><i
-            class="fa-brands fa-linkedin"></i></a>
-      </div> -->
-
-      <section class="sectionLanguage" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
-
-        <div class="contArrow">
-          <img src="assets/icons/flag/{{ selectedFlag }}.jpg" class="flag main-flag">
-          <i class="fa-solid fa-angle-down"></i>
+      <ul>
+        <div class="contLogo">
+          <img src="assets/immaginiGenerali/nakamalogo.png" class="logo">
         </div>
 
-        <div class="dropdownMenu" *ngIf="isDropdownVisible">
-          <div class="dropdownItem" *ngFor="let flag of flags" (click)="selectFlag(flag)">
-            <img src="assets/icons/flag/{{ flag }}.jpg" class="flag">
+        <li>
+          <div class="italic voce" routerLink="/home" routerLinkActive="highlight" (mouseover)="highlight($event)">
+            Home
           </div>
-        </div>
-      </section>
+        </li>
+        <li>
+          <div class="italic" routerLink="/chisono" routerLinkActive="highlight" (mouseover)="highlight($event)">
+            Chi sono
+          </div>
+        </li>
+        <li>
+          <div class="italic" routerLink="/progetti" routerLinkActive="highlight" (mouseover)="highlight($event)">
+            Progetti
+          </div>
+        </li>
+        <li>
+          <div class="italic" routerLink="/contatti" routerLinkActive="highlight" (mouseover)="highlight($event)">
+            Contatti
+          </div>
+        </li>
+
+        <section class="sectionLanguage" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+
+          <div class="contArrow">
+            <img src="assets/icons/flag/{{ selectedFlag }}.jpg" class="flag main-flag">
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+
+          <div class="dropdownMenu" *ngIf="isDropdownVisible">
+            <div class="dropdownItem" *ngFor="let flag of flags" (click)="selectFlag(flag)">
+              <img src="assets/icons/flag/{{ flag }}.jpg" class="flag">
+            </div>
+          </div>
+        </section>
+
+
+
+      </ul>
 
 
 
 
 
-
-    </ul>
-
-
-
-
-
+    </div>
   </div>
-</div>
+

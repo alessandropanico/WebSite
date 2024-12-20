@@ -247,6 +247,8 @@ export class HeaderComponent {
     this.isDropdownVisible = false; // Chiude immediatamente il menu
   }
 
+
+
 }
 
 // Classe Particle
@@ -286,4 +288,10 @@ class Particle {
     // Gestisce la dissolvenza
     this.opacity -= this.disintegrateRate;
   }
+
+  //--------------------------------------
+
+
+
+
 }
