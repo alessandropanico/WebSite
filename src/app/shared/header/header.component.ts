@@ -247,7 +247,65 @@ export class HeaderComponent {
     this.isDropdownVisible = false; // Chiude immediatamente il menu
   }
 
+//-----------------------------------------
 
+isMenuOpen: boolean = false; // Stato del menu
+startX: number = 0; // Posizione iniziale X per swipe
+currentX: number = 0; // Posizione attuale X per swipe
+
+
+ // Metodo per aprire/chiudere il menu
+ toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
+// Chiudi il menu se si clicca fuori
+@HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent) {
+  const clickedInside = this.elRef.nativeElement.contains(event.target);
+  if (!clickedInside && this.isMenuOpen) {
+    this.isMenuOpen = false;
+  }
+}
+
+// Rileva inizio del tocco o clic
+@HostListener('touchstart', ['$event'])
+@HostListener('mousedown', ['$event'])
+onTouchStart(event: TouchEvent | MouseEvent) {
+  if (event instanceof TouchEvent) {
+    this.startX = event.touches[0].clientX;
+  } else {
+    this.startX = event.clientX;
+  }
+}
+
+// Rileva movimento del tocco o mouse
+@HostListener('touchmove', ['$event'])
+@HostListener('mousemove', ['$event'])
+onTouchMove(event: TouchEvent | MouseEvent) {
+  if (event instanceof TouchEvent) {
+    this.currentX = event.touches[0].clientX;
+  } else {
+    this.currentX = event.clientX;
+  }
+}
+
+// Rileva fine del tocco o mouse
+@HostListener('touchend')
+@HostListener('mouseup')
+onTouchEnd() {
+  const swipeDistance = this.startX - this.currentX;
+
+  if (swipeDistance > 50) {
+    this.isMenuOpen = false; // Chiudi il menu con swipe verso destra
+  } else if (swipeDistance < -50) {
+    this.isMenuOpen = true; // Apri il menu con swipe verso sinistra
+  }
+
+  // Resetta i valori
+  this.startX = 0;
+  this.currentX = 0;
+}
 
 }
 

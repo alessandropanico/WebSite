@@ -233,3 +233,79 @@ a {
 
 
 /*------------------------------------------------*/
+
+.mobile{
+  display: none;
+}
+
+.desktop{
+  display:block;
+}
+
+@media screen and (max-width:600px)
+{
+
+  .mobile{
+    display: block;
+  }
+
+  .desktop{
+    display:none;
+  }
+
+/* Sidebar Menu */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Fuori dalla vista inizialmente */
+  width: 70vw;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 95%);
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Quando il menu è attivo, viene mostrato */
+.sidebar.active {
+  left: 0;
+}
+
+/* Contenitore dell'hamburger */
+.hamburger {
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+}
+
+/* Stile del logo */
+.mobileLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenuto del menu */
+.sidebarContent ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarContent ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebarContent ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+
+
+}

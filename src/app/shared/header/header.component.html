@@ -1,3 +1,4 @@
+  <section class="desktop">
   <div id="main">
     <div id="menus">
 
@@ -57,4 +58,32 @@
 
     </div>
   </div>
+</section>
+
+<section class="mobile">
+  <div id="main">
+    <!-- Hamburger Menu -->
+    <div class="hamburger" (click)="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <!-- Logo -->
+    <div class="mobileLogo">
+      <img src="assets/immaginiGenerali/nakamalogo.png" class="logo">
+    </div>
+  </div>
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" [class.active]="isMenuOpen" (click)="$event.stopPropagation()">
+    <div class="sidebarContent">
+      <ul>
+        <li><a routerLink="/home" routerLinkActive="highlight">Home</a></li>
+        <li><a routerLink="/chisono" routerLinkActive="highlight">Chi sono</a></li>
+        <li><a routerLink="/progetti" routerLinkActive="highlight">Progetti</a></li>
+        <li><a routerLink="/contatti" routerLinkActive="highlight">Contatti</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 
