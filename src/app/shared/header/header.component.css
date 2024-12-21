@@ -339,4 +339,11 @@ a {
     margin-top: 1vh;
   }
 
+  .fa-bars:before, .fa-navicon:before {
+    content: "\f0c9";
+    display: flex;
+    font-size: 7vw;
+}
+
+
 }
