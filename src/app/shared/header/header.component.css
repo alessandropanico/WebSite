@@ -279,6 +279,7 @@ a {
   /* Quando il menu è attivo, viene mostrato */
   .sidebar.active {
     left: 0;
+    border-right: solid 3px #bb7e29;
   }
 
   /* Contenitore dell'hamburger */
@@ -336,7 +337,6 @@ a {
 
 
   .sidebar {
-    margin-top: 1vh;
     z-index: 999;
 
   }
@@ -365,38 +365,40 @@ a {
     height: auto;
   }
 
-  .contX{
+  .contX {
     margin-left: 5vw;
-    margin-top: 1vh;
+    margin-top: 2vh;
   }
 
 
 
-  .fa-x{
+  .fa-x {
     font-size: 7vw;
     color: #bb7e29;
   }
 
 
-/* Overlay per oscurare lo sfondo */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Oscuramento con trasparenza */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 998; /* Livello sotto la sidebar */
-}
+  /* Overlay per oscurare lo sfondo */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Oscuramento con trasparenza */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+    /* Livello sotto la sidebar */
+  }
 
-/* Mostra overlay quando attivo */
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+  /* Mostra overlay quando attivo */
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
 
 
 
