@@ -83,7 +83,7 @@
       <div class="sidebar" [class.active]="isMenuOpen" (click)="$event.stopPropagation()">
 
         <div class="contX">
-              <i class="fa-solid fa-x"></i>
+              <i class="fa-solid fa-x" (click)="toggleMenu()"></i>
         </div>
 
         <div class="d-flex justify-content-center">
