@@ -291,8 +291,7 @@ a {
 
   .mobilelogo {
     width: 10vw;
-    position: absolute;
-    left: 50%;
+    float: left;
   }
 
   .contHamburger {
@@ -326,24 +325,59 @@ a {
 
   }
 
-  ul {
+  .sidebarContent ul {
     display: flex;
-    position: absolute;
+    align-items: center;
     flex-direction: column;
-    left: 0;
-    left: 17%;
+    justify-content: center;
+    padding: 0px !important;
+    margin-top: 2vh;
   }
 
 
-  .sidebar{
+  .sidebar {
     margin-top: 1vh;
   }
 
-  .fa-bars:before, .fa-navicon:before {
+  .fa-bars:before,
+  .fa-navicon:before {
     content: "\f0c9";
     display: flex;
     font-size: 7vw;
-}
+  }
+
+
+  .contLogo {
+    background-color: rgb(240, 100, 20);
+    position: relative;
+    height: auto;
+    width: 30vw;
+    border-radius: 50%;
+    margin-top: 2vh;
+
+  }
+
+
+  .logo {
+    width: 30vw;
+    height: auto;
+  }
+
+  .contX{
+    margin-left: 5vw;
+    margin-top: 1vh;
+  }
+
+
+
+  .fa-x{
+    font-size: 7vw;
+    color: #bb7e29;
+  }
+
+
+
+
 
 
 }
