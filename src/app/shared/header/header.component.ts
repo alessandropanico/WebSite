@@ -259,6 +259,9 @@ currentX: number = 0; // Posizione attuale X per swipe
   this.isMenuOpen = !this.isMenuOpen;
 }
 
+closeMenu() {
+  this.isMenuOpen = false;
+}
 
 
 }
