@@ -247,6 +247,11 @@ export class HeaderComponent {
     this.isDropdownVisible = false; // Chiude immediatamente il menu
   }
 
+  // Mostra o nasconde il menu a tendina
+  toggleDropdown() {
+    this.isDropdownVisible = !this.isDropdownVisible;
+
+  }
 //-----------------------------------------
 
 isMenuOpen: boolean = false; // Stato del menu
@@ -261,6 +266,8 @@ currentX: number = 0; // Posizione attuale X per swipe
 
 closeMenu() {
   this.isMenuOpen = false;
+  this.isDropdownVisible = false;
+
 }
 
 
