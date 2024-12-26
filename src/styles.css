@@ -191,6 +191,7 @@ body::-webkit-scrollbar-thumb {
 
 
 /*-------------------------*/
+
  body:has(.cursor-image) {
   cursor: url("./assets/cursor.svg"), auto
 }
