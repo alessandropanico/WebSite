@@ -1,7 +1,7 @@
 .sfondo {
   position: relative;
   width: 100%;
-  height: 60vh;
+  height: 55vh;
   overflow: hidden;
 }
 
@@ -11,8 +11,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Copre l'intera area senza distorsioni */
-  z-index: -2; /* Assicura che il video stia dietro il contenuto */
+  object-fit: cover;
+  /* Copre l'intera area senza distorsioni */
+  z-index: -2;
+  /* Assicura che il video stia dietro il contenuto */
 }
 
 .video-overlay {
@@ -21,6 +23,21 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.588); /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
-  z-index: -1; /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
+  background: rgba(0, 0, 0, 0.588);
+  /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
+  z-index: -1;
+  /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
+}
+
+
+.sfondoChiSono {
+  background: url(/assets/immaginiHome/2.jpg);
+  /* Centra e non ripete l'immagine */
+  background-size: cover;
+  /* Adatta l'immagine all'area */
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  /* Punto e virgola aggiunto */
 }
