@@ -1,7 +1,26 @@
-.sfondoChisono {
-  background-image: url(/assets/immaginiHome/2.jpg);
+.sfondo {
+  position: relative;
   width: 100%;
-  top: 0;
-  height: 55vh;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.video-background {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Copre l'intera area senza distorsioni */
+  z-index: -2; /* Assicura che il video stia dietro il contenuto */
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.588); /* Sfondo nero con opacità 0.5 (puoi regolare l'opacità) */
+  z-index: -1; /* Assicura che l'overlay sia sopra il video ma sotto il contenuto */
 }
