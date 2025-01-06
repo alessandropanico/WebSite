@@ -1,7 +1,7 @@
 .sfondo {
   position: relative;
   width: 100%;
-  height: 55vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -40,4 +40,11 @@
   z-index: -1;
   position: absolute;
   /* Punto e virgola aggiunto */
+}
+
+.imageProfilo{
+  width: 25vw;
+  height: auto;
+  z-index: 99999;
+
 }
