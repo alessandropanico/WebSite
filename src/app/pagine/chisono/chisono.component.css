@@ -42,9 +42,25 @@
   /* Punto e virgola aggiunto */
 }
 
-.imageProfilo{
-  width: 25vw;
-  height: auto;
-  z-index: 99999;
 
+.angelo {
+  font-size: 8.167vw;
+  color: #f3c026;
+  animation: _ngcontent-ng-c1234002673_glow 1s infinite alternate;
+  text-shadow: 0 0 10px #bb7e29;
+  position: absolute;
+  margin-top: -3vh;
+}
+
+/*Bagliore*/
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 20px #bb7e29;
+    /* Stato iniziale del bagliore (aumenta la larghezza) */
+  }
+
+  100% {
+    text-shadow: 0 0 40px #bb7e29, 0 0 60px #bb7e29;
+    /* Stato finale del bagliore (aumenta ancora la larghezza) */
+  }
 }
