@@ -64,3 +64,118 @@
     /* Stato finale del bagliore (aumenta ancora la larghezza) */
   }
 }
+
+
+/*----------------------*/
+.narrower-container {
+  max-width: 70%;
+  /* Larghezza massima desiderata per il container */
+  margin: 0 auto;
+  /* Per centrare il container orizzontalmente */
+}
+
+
+.quadrato {
+  background-color: rgb(207, 21, 21);
+  font-family: overwatch2;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  z-index: 10; /* Imposta un valore maggiore per sovrapporre il div sopra la foto */
+  position: absolute;
+  margin-left: 250px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0; /* Aggiungi questa regola per evitare che il margine superiore influenzi la posizione */
+}
+
+.divFoto {
+  margin-right: 50px;
+  position: relative;
+  z-index: -1;
+}
+
+.immagineProfilo {
+  width: 300px;
+  height: 300px;
+  margin-top: 40px;
+  z-index: -1;
+  position: relative;
+}
+
+.animation-container {
+  position: relative;
+}
+
+
+.btn-grad {
+  background-image: linear-gradient(to right, #DC2424 0%, #6e3391 51%, #DC2424 100%);
+  margin: 10px;
+  padding: 30px 60px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  /* Rimuovi la proprietà box-shadow o imposta su "none" */
+  box-shadow: none;
+  /* o box-shadow: 0 0 20px #eee; */
+  border-radius: 50px;
+  display: block;
+  font-family: mw;
+  font-size: 25px;
+  border-color: rgb(152, 64, 182);
+  display: inline-block;
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: red
+}
+
+h1{
+  color: rgb(255, 255, 255);
+  text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
+  font-family: overwatch2;
+  line-height: 1;
+  z-index: 10;
+  font-size: 5vw;
+}
+
+.chiSono {
+  font-family: overwatch;
+  font-size: 30px;
+  color: black
+}
+
+
+.testoChiSono {
+  text-align: justify;
+  color: white;
+}
+
+
+.obiettivi {
+  font-family: concilian;
+  font-size: 50px;
+  color: black;
+  margin-top: 20px;
+}
+
+
+.testoObiettivi {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  text-align: justify;
+  margin-top: 50px;
+}
+
