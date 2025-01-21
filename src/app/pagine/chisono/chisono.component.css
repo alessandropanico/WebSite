@@ -32,14 +32,11 @@
 
 .sfondoChiSono {
   background: url(/assets/immaginiHome/2.jpg);
-  /* Centra e non ripete l'immagine */
   background-size: cover;
-  /* Adatta l'immagine all'area */
-  height: 100%;
   width: 100%;
+  height: 100vh;
   z-index: -1;
-  position: absolute;
-  /* Punto e virgola aggiunto */
+  position: relative;
 }
 
 
@@ -94,7 +91,6 @@
 }
 
 .divFoto {
-  margin-right: 50px;
   position: relative;
   z-index: -1;
 }
@@ -111,11 +107,6 @@
 }
 
 
-a {
-  text-decoration: none;
-  color: red
-}
-
 h1 {
   color: rgb(255, 255, 255);
   text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
@@ -125,26 +116,12 @@ h1 {
   font-size: 5vw;
 }
 
-.chiSono {
-  font-family: overwatch;
-  font-size: 30px;
-  color: black
-}
-
 
 .testoChiSono {
   text-align: justify;
   color: white;
 }
 
-
-
-.testoObiettivi {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  text-align: justify;
-  margin-top: 50px;
-}
 
 
 /*-----------------------------------*/
@@ -159,4 +136,12 @@ h1 {
 .animate-top.active {
   transform: translateY(0); /* Riporta l'elemento alla posizione originale */
   opacity: 1; /* Mostra l'elemento */
+}
+
+/*-----------------------------------*/
+
+.sfondo2{
+  position: relative;
+  width: 100%;
+  overflow: hidden
 }
