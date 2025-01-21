@@ -57,3 +57,16 @@ h1{
   width: 100%;
   height: auto;
 }
+
+
+/* Aggiungi questa parte al file CSS */
+.animate-top {
+  transform: translateY(-100px); /* Posiziona l'elemento sopra */
+  opacity: 0; /* Nascondi l'elemento */
+  transition: transform 1s ease-out, opacity 1s ease-out; /* Aggiungi un'animazione fluida */
+}
+
+.animate-top.active {
+  transform: translateY(0); /* Riporta l'elemento alla posizione originale */
+  opacity: 1; /* Mostra l'elemento */
+}

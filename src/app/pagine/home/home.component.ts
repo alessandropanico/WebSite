@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 
+declare const $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,6 +17,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initializeVideos();
+
+    setTimeout(() => {
+      $('.animate-top').addClass('active');
+    }, 200); // Ritardo di 500ms
   }
 
   initializeVideos(): void {
