@@ -147,7 +147,7 @@ h1 {
 .animate-top {
   transform: translateY(-100px);
   opacity: 0;
-  transition: transform 1s ease-out, opacity 1s ease-out;
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
 }
 
 .animate-top.active {
@@ -161,7 +161,7 @@ h1 {
 .animate-left {
   transform: translateX(-100px);
   opacity: 0;
-  transition: transform 1s ease-out, opacity 1s ease-out;
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
 }
 
 .animate-left.active {
@@ -174,7 +174,7 @@ h1 {
 .animate-right {
   transform: translateX(100px);
   opacity: 0;
-  transition: transform 1s ease-out, opacity 1s ease-out;
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
 }
 
 .animate-right.active {
