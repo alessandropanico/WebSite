@@ -7,11 +7,11 @@ import { ProgettiComponent } from './pagine/progetti/progetti.component';
 
 const routes: Routes = [
 
-{path:'home',component:HomeComponent},
-{ path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige la root a "home"
-{path:'contatti',component:ContattiComponent},
-{path:'chisono',component:ChisonoComponent},
-{path:'progetti',component:ProgettiComponent}
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige la root a "home"
+  { path: 'contatti', component: ContattiComponent },
+  { path: 'chisono', component: ChisonoComponent },
+  { path: 'progetti', component: ProgettiComponent }
 
 
 
