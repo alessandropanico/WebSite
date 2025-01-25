@@ -17,7 +17,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initializeVideos();
+    this.animationTop();
 
+  }
+
+  animationTop() {
+    // Seleziona tutti gli elementi con la classe 'animate-top'
     const elements = document.querySelectorAll('.animate-top');
 
     // Crea una funzione di callback per l'observer
@@ -32,7 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }, {
       root: null, // L'elemento di riferimento è il viewport
       rootMargin: '0px 0px -100px 0px', // Offset: -100px sul fondo, in modo che l'elemento inizi a essere animato un po' prima di entrare completamente nel viewport
-      threshold: 0.1 // L'elemento deve essere visibile almeno per il 10% (puoi aumentare questo valore se desideri che l'elemento sia più visibile prima di attivare l'animazione)
+      threshold: 0.1 // L'elemento deve essere visibile almeno per il 10%
     });
 
     // Osserva ogni elemento con la classe 'animate-top'

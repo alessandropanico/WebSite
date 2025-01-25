@@ -10,6 +10,14 @@ declare const $: any;
 export class ChisonoComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
+    
+    this.animationTop();
+    this.animationLeft();
+    this.animationRight();
+
+  }
+
+  animationTop() {
     // Seleziona tutti gli elementi con la classe 'animate-top'
     const elements = document.querySelectorAll('.animate-top');
 
@@ -32,7 +40,10 @@ export class ChisonoComponent implements AfterViewInit {
     elements.forEach(element => {
       observer.observe(element);
     });
+  }
 
+
+  animationLeft() {
     // Seleziona tutti gli elementi con la classe 'animate-left'
     const elementsleft = document.querySelectorAll('.animate-left');
 
@@ -55,7 +66,9 @@ export class ChisonoComponent implements AfterViewInit {
     elementsleft.forEach(elementleft => {
       observerleft.observe(elementleft);
     });
+  }
 
+  animationRight() {
     // Seleziona tutti gli elementi con la classe 'animate-right'
     const elementsRight = document.querySelectorAll('.animate-right');
 
@@ -79,4 +92,8 @@ export class ChisonoComponent implements AfterViewInit {
       observerRight.observe(elementRight);
     });
   }
+
+
+
+
 }
