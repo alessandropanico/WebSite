@@ -68,5 +68,5 @@ h1{
 
 .animate-top.active {
   transform: translateY(0); /* Riporta l'elemento alla posizione originale */
-  opacity: 1.5; /* Mostra l'elemento */
+  opacity: 1; /* Mostra l'elemento */
 }
