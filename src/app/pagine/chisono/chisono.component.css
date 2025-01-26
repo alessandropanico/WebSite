@@ -140,49 +140,6 @@ h1 {
 }
 
 
-
-/*-----------------------------------*/
-/*---ANIMAZIONI---*/
-
-.animate-top {
-  transform: translateY(-100px);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 1s ease-out;
-}
-
-.animate-top.active {
-  transform: translateY(0);
-  opacity: 1;
-
-}
-
-/*-----------------------------*/
-
-.animate-left {
-  transform: translateX(-100px);
-  opacity: 0;
-  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
-}
-
-.animate-left.active {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/*-----------------------------*/
-
-.animate-right {
-  transform: translateX(100px);
-  opacity: 0;
-  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
-}
-
-.animate-right.active {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-
 /*-----------------------------------*/
 
 
