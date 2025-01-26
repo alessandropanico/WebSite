@@ -76,7 +76,6 @@
 
 /*-------------------------*/
 
-/* [1] The container */
 .img-hover-zoom {
   width: 25vw;
   overflow: hidden;
@@ -109,6 +108,19 @@
 .mobile{
   display: none;
 }
+
+h1{
+  color: rgb(255, 255, 255);
+  text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
+  font-family: overwatch2;
+  text-align: left;
+  line-height: 1;
+  z-index: 10;
+  font-size: 3vw;
+}
+
+/*-------------------------*/
+/*---MEDIA SCREEN---*/
 
 @media screen and (max-width:600px){
 
