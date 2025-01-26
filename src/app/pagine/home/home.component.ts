@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 
 declare const $: any;
 
@@ -7,16 +7,13 @@ declare const $: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements AfterViewInit {
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
-  ngOnInit(): void {
-    // Logica o inizializzazioni generali possono essere messe qui
-  }
+
 
   ngAfterViewInit(): void {
-    this.initializeVideos();
     this.animationTop();
 
   }
@@ -46,14 +43,4 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  initializeVideos(): void {
-    const videos: NodeListOf<HTMLVideoElement> = this.el.nativeElement.querySelectorAll('video');
-    videos.forEach(video => {
-      video.load(); // Ricarica il video per forzare il corretto avvio
-      video.muted = true; // Mute per evitare restrizioni del browser
-      video.play().catch(err => {
-        console.warn('Errore nel riprodurre il video:', err);
-      });
-    });
-  }
 }

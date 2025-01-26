@@ -74,18 +74,57 @@
 /*-----------------------------------*/
 
 
-.testoObiettivi a {
-  color: #f3c026;
-  text-decoration: none;
-  z-index: 9999;
-  font-weight: bold;
+.sfondoProgetti {
+  background: url(/assets/immaginiHome/2.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 190vh;
+  position: relative;
 }
 
 
+/*-----------------------------------*/
 
-.testoObiettivi {
-  color: rgb(255, 255, 255);
-  text-align: justify;
-  margin-top: 5vh;
+.contCard {
+  width: 90%;
 }
 
+/* Impostazioni generali della card */
+.card {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 10px;
+  width: 25vw;
+  min-width: 300px;
+  background: beige;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden; /* Nasconde la parte dell'immagine che esce dalla card */
+  z-index: 1;
+}
+
+/* Contenitore dell'immagine */
+.card-img-container {
+  width: 100%;
+  height: 200px;  /* Imposta una altezza fissa per l'immagine */
+  overflow: hidden; /* Impedisce che l'immagine esca dalla card */
+  position: relative;
+}
+
+/* Aggiungi uno zoom all'immagine quando passa il mouse sopra */
+.zoom-img {
+  transition: transform 0.3s ease; /* Transizione per un effetto fluido */
+  width: 100%;  /* Assicurati che l'immagine occupi tutta la larghezza */
+  height: 100%;
+  object-fit: cover; /* Adatta l'immagine alla card mantenendo il suo aspetto */
+}
+
+.card:hover .zoom-img {
+  transform: scale(1.1); /* Aumenta la dimensione dell'immagine al 110% */
+}
+
+.card-body{
+  height: 25vh;
+  z-index: 999;
+  overflow: hidden; /* Impedisce che l'immagine esca dalla card */
+}
