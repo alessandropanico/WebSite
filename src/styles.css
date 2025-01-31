@@ -1,7 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.desktop{
+  display: none;
+}
 
-body {
-  background-color: rgb(255, 255, 255);
+.mobile{
+  display: block;
 }
 
 @font-face {
@@ -253,3 +255,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*-----------------------------------*/
+/*---MOBILE---*/
+@media screen and (max-width:600px){
+
+  .desktop{
+    display: block;
+  }
+
+  .mobile{
+    display: none;
+  }
+
+}

@@ -11,7 +11,8 @@ import { ChisonoComponent } from './pagine/chisono/chisono.component';
 import { ProgettiComponent } from './pagine/progetti/progetti.component';
 import { ContattiComponent } from './pagine/contatti/contatti.component';
 import { ProvaComponent } from './shared/prova/prova.component';
-import { SliderHomeComponent } from './shared/slider-home/slider-home.component';
+import { SliderHomeComponent } from './shared/slider/slider-home/slider-home.component';
+import { SliderProgettiComponent } from './shared/slider/slider-progetti/slider-progetti.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SliderHomeComponent } from './shared/slider-home/slider-home.component'
     ContattiComponent,
     ProvaComponent,
     SliderHomeComponent,
+    SliderProgettiComponent,
 
   ],
   imports: [
