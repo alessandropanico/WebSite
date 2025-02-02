@@ -1,4 +1,5 @@
-import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -16,26 +17,37 @@ export class HeaderComponent {
   private isHighlightActive = false;
   private particles: Particle[] = [];
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2, private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private elRef: ElementRef,
+    private renderer: Renderer2,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: object // 👈 Aggiunto PLATFORM_ID
+  ) { }
+
 
   ngOnInit(): void {
-    // Imposta il canvas context per il menu evidenziato
-    const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
-    this.canvasContext = canvas.getContext('2d');
-    this.initParticles(0, 0); // inizializza le particelle con una posizione di partenza
-    this.playBackgroundAudio();
+    if (isPlatformBrowser(this.platformId)) { // 👈 Verifica se siamo nel browser
+      // Imposta il canvas context per il menu evidenziato
+      const canvas = this.elRef.nativeElement.querySelector('#menu-highlight') as HTMLCanvasElement;
+      if (canvas) {
+        this.canvasContext = canvas.getContext('2d');
+      }
+      this.initParticles(0, 0); // inizializza le particelle con una posizione di partenza
+      this.playBackgroundAudio();
 
-    // Aggiungi sottoscrizione al router per aggiornare l'elemento 'highlight' quando cambia l'URL
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.updateMenuHighlight();
-      });
+      // Aggiungi sottoscrizione al router per aggiornare l'elemento 'highlight' quando cambia l'URL
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe(() => {
+          this.updateMenuHighlight();
+        });
 
-    // Esegui la funzione iniziale per applicare il 'highlight' corretto
-    this.updateMenuHighlight();
+      // Esegui la funzione iniziale per applicare l' 'highlight' corretto
+      this.updateMenuHighlight();
+    }
   }
+
 
 
   // Funzione per applicare l'evidenziazione al menu in base all'URL corrente
