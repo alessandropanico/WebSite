@@ -1,4 +1,6 @@
-import { Component, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 declare const $: any;
 
@@ -9,38 +11,34 @@ declare const $: any;
 })
 export class HomeComponent implements AfterViewInit {
 
-  constructor(private renderer: Renderer2, private el: ElementRef) { }
-
-
+  constructor(
+    private renderer: Renderer2,
+    private el: ElementRef,
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngAfterViewInit(): void {
-    this.animationTop();
-
+    if (isPlatformBrowser(this.platformId)) { // Verifica se siamo in un ambiente browser
+      this.animationTop();
+    }
   }
 
   animationTop() {
-    // Seleziona tutti gli elementi con la classe 'animate-top'
-    const elements = document.querySelectorAll('.animate-top');
-
-    // Crea una funzione di callback per l'observer
+    const elements = this.document.querySelectorAll('.animate-top');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        // Aggiungi la classe 'active' solo quando l'elemento è visibile con un offset
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target); // Interrompe l'osservazione dopo l'attivazione
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      root: null, // L'elemento di riferimento è il viewport
-      rootMargin: '0px 0px -100px 0px', // Offset: -100px sul fondo, in modo che l'elemento inizi a essere animato un po' prima di entrare completamente nel viewport
-      threshold: 0.1 // L'elemento deve essere visibile almeno per il 10%
+      root: null,
+      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.1
     });
 
-    // Osserva ogni elemento con la classe 'animate-top'
-    elements.forEach(element => {
-      observer.observe(element);
-    });
+    elements.forEach(element => observer.observe(element));
   }
-
 }

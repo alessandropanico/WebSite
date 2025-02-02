@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit, Inject, PLATFORM_ID
+} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
@@ -9,10 +11,11 @@ interface Slide {
   title: string;
   description: string;
 }
+
 @Component({
   selector: 'app-slider-home',
   templateUrl: './slider-home.component.html',
-  styleUrl: './slider-home.component.css'
+  styleUrls: ['./slider-home.component.css'] // ✅ Corretto da `styleUrl` a `styleUrls`
 })
 export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   slides: Slide[] = [];
@@ -24,22 +27,18 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
     disableOnInteraction: false
   };
   breakpoints = {
-    400: {
-      slidesPerView: 1
-    },
-    601: {
-      slidesPerView: 1
-    }
+    400: { slidesPerView: 1 },
+    601: { slidesPerView: 1 }
   };
 
   isSwiperActive = false;
-  private navigationSubscription!: Subscription;
+  private navigationSubscription?: Subscription; // ✅ Preveniamo possibili errori di `undefined`
 
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) { }
+  ) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -49,9 +48,8 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
         { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: "YouTube",
           description: 'Scopri il mio canale Youtube! Iscriviti per supportarmi a continuare con più contenuti!' },
         { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice',
-           description: 'Justice è un opera che si basa su me stesso. Io, Dio, la intera vita. Una opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.' },
+           description: 'Justice è un’opera che si basa su me stesso. Io, Dio, la vita intera. Un’opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.' },
       ];
-
 
       // Inizializza gli slides
       this.slides = [...originalSlides, ...originalSlides, ...originalSlides];
@@ -59,7 +57,7 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
       // Sottoscrizione a NavigationEnd per ri-inizializzare Swiper solo su /home
       this.navigationSubscription = this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd && event.urlAfterRedirects === '/home') {
-          this.reloadSwiper(originalSlides);
+          this.reloadSwiper();
         }
       });
 
@@ -74,20 +72,17 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }, 0);
   }
 
-  reloadSwiper(originalSlides: Slide[]) {
+  reloadSwiper() {
     this.isSwiperActive = false;
     this.cdr.detectChanges();
 
     setTimeout(() => {
-      this.slides = [...originalSlides, ...originalSlides, ...originalSlides];
       this.isSwiperActive = true;
       this.cdr.detectChanges();
     }, 100);
   }
 
   ngOnDestroy() {
-    if (this.navigationSubscription) {
-      this.navigationSubscription.unsubscribe();
-    }
+    this.navigationSubscription?.unsubscribe(); // ✅ Evitiamo memory leaks con `?.`
   }
 }
