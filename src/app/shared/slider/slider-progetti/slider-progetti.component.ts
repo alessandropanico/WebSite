@@ -44,9 +44,9 @@ export class SliderProgettiComponent implements OnInit, OnDestroy, AfterViewInit
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
-        { imgSrc: 'assets/immaginiGenerali/profilo.jpg', altText: 'Profilo 1', title: 'Card 1', description: 'Descrizione della prima card' },
-        { imgSrc: 'assets/immaginiGenerali/profilo.jpg', altText: 'Profilo 2', title: 'Card 2', description: 'Descrizione della seconda card' },
-        { imgSrc: 'assets/immaginiGenerali/profilo.jpg', altText: 'Profilo 3', title: 'Card 3', description: 'Descrizione della terza card' },
+        { imgSrc: 'assets/immaginiSliderHome/programmazione.jpg', altText: 'Profilo 1', title: 'Card 1', description: 'Descrizione della prima card' },
+        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Profilo 2', title: 'Card 2', description: 'Descrizione della seconda card' },
+        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Profilo 3', title: 'Card 3', description: 'Descrizione della terza card' },
       ];
 
       // Duplichiamo le card per avere più elementi nello slider

@@ -25,6 +25,28 @@
   z-index: -1;
 }
 
+/* Contenitore per centrare l'immagine */
+.glow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Effetto bagliore sull'immagine */
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 20px #bb7e29);
+  }
+  100% {
+    filter: drop-shadow(0 0 40px #bb7e29) drop-shadow(0 0 60px #bb7e29);
+  }
+}
+
+.glow-img {
+  width: 15vw; /* Imposta la dimensione desiderata */
+  height: auto;
+  animation: glow 1.5s infinite alternate; /* Effetto pulsante */
+}
 
 
 /*-----------------------------------*/
@@ -34,7 +56,7 @@
   background: url(/assets/immaginiHome/2.jpg);
   background-size: cover;
   width: 100%;
-  height: 190vh;
+  height: 110vh;
   position: relative;
 }
 
@@ -108,6 +130,16 @@
 }
 
 h1{
+  color: rgb(255, 255, 255);
+  text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
+  font-family: overwatch2;
+  text-align: left;
+  line-height: 1;
+  z-index: 10;
+  font-size: 5vw;
+}
+
+.card-title{
   color: rgb(255, 255, 255);
   text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
   font-family: overwatch2;
