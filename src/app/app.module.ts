@@ -13,6 +13,9 @@ import { ContattiComponent } from './pagine/contatti/contatti.component';
 import { ProvaComponent } from './shared/prova/prova.component';
 import { SliderHomeComponent } from './shared/slider/slider-home/slider-home.component';
 import { SliderProgettiComponent } from './shared/slider/slider-progetti/slider-progetti.component';
+import { CodingComponent } from './pagine/progetti/coding/coding/coding.component';
+import { YoutubeComponent } from './pagine/progetti/coding/youtube/youtube.component';
+import { JusticeComponent } from './pagine/progetti/coding/justice/justice.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { SliderProgettiComponent } from './shared/slider/slider-progetti/slider-
     ProvaComponent,
     SliderHomeComponent,
     SliderProgettiComponent,
+    CodingComponent,
+    YoutubeComponent,
+    JusticeComponent,
 
   ],
   imports: [

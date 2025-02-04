@@ -48,6 +48,10 @@
   animation: glow 1.5s infinite alternate; /* Effetto pulsante */
 }
 
+.card a{
+  text-decoration: none;
+  color:white;
+}
 
 /*-----------------------------------*/
 
