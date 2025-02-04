@@ -1,0 +1,256 @@
+.contPers {
+  width: 90%;
+  margin: 1vw auto;
+  height: auto;
+  text-align: left;
+  position: relative;
+  margin-top: 2.784vh;
+}
+
+swiper-slide {
+  text-align: center;
+  border-radius: 24px;
+  position: relative;
+  width: 100% !important;
+  /* Assicura che la larghezza sia il 100% */
+  justify-content: center;
+  display: flex
+;
+
+  /* Assicurati che l'immagine occupi tutto lo spazio */
+  .mio {
+    width: 55%;
+    height: auto;
+    object-fit: cover;
+    /* Mantiene le proporzioni dell'immagine */
+    cursor: pointer;
+  }
+
+  .cont {
+    flex-direction: column;
+    display: flex;
+    margin-top: -19vh;
+    margin-left: 4vw;
+    position: absolute;
+    width: 50%;
+    /* Larghezza del contenitore di testo */
+  }
+
+  .title-color {
+    color: black;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .content-color {
+    font-size: 1.2em;
+    color: gray;
+    margin-top: -0.7vh;
+  }
+
+  .btn-solid {
+    text-align: center !important;
+    width: 31vw;
+    margin-top: -1vh;
+  }
+}
+
+.title-black {
+  color: black;
+  /* Colore del titolo nero */
+  font-weight: bold;
+}
+
+.title-white {
+  color: white;
+  /* Colore del titolo bianco */
+  font-weight: bold;
+
+}
+
+
+.btn-red {
+  background-color: #A70909;
+  /* Colore rosso */
+  color: white;
+  /* Testo bianco */
+}
+
+.btn-white {
+  background-color: white;
+  /* Colore bianco */
+  color: black;
+  /* Testo nero */
+}
+
+/*---------------------------*/
+
+.text-container {
+  text-align: left;
+  margin-top: 2vh;
+  width: 57%;
+
+}
+
+.slide-title {
+  font-size: 3vw;
+  color: rgb(255, 255, 255);
+  font-family: overwatch2;
+  font-style: italic;
+}
+
+.slide-description {
+  font-size: 1vw;
+  color: rgb(255, 255, 255);
+  text-align: justify;
+}
+
+
+/*/
+.sfondo {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.588);
+  z-index: -1;
+}
+
+
+
+/*-----------------------------------*/
+
+
+.sfondoProgetti {
+  background: url(/assets/immaginiHome/2.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 190vh;
+  position: relative;
+}
+
+
+.contCard {
+  width: 90%;
+}
+
+/* Impostazioni generali della card */
+.card {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 0;
+  width: 25vw;
+  background: radial-gradient(124.81% 124.81% at 50% -.29%, #422424 43.75%, #121524 100%);
+  /* background: radial-gradient(124.81% 124.81% at 50% -.29%, #242a42 43.75%, #121524 100%); */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: white;
+}
+
+
+.card:hover .zoom-img {
+  transform: scale(1.1);
+}
+
+
+.card-body {
+  height: 25vh;
+  z-index: 999;
+  overflow: hidden;
+  /* Impedisce che l'immagine esca dalla card */
+  position: relative;
+}
+
+
+/*-------------------------*/
+
+.img-hover-zoom {
+  width: 25vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.5s ease;
+  transform: scale(1);
+  object-fit: cover;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.1);
+  z-index: -1;
+  position: relative;
+}
+
+.immCard {
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  position: relative;
+}
+
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
+  font-family: overwatch2;
+  text-align: left;
+  line-height: 1;
+  z-index: 10;
+  font-size: 3vw;
+}
+
+/*-------------------------*/
+/*---MEDIA SCREEN---*/
+
+@media screen and (max-width:600px) {
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+
+  .card {
+    width: 90%;
+  }
+
+  .img-hover-zoom {
+    width: auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+
+
+
+}
