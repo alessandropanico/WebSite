@@ -37,20 +37,23 @@
   0% {
     filter: drop-shadow(0 0 20px #bb7e29);
   }
+
   100% {
     filter: drop-shadow(0 0 40px #bb7e29) drop-shadow(0 0 60px #bb7e29);
   }
 }
 
 .glow-img {
-  width: 15vw; /* Imposta la dimensione desiderata */
+  width: 15vw;
+  /* Imposta la dimensione desiderata */
   height: auto;
-  animation: glow 1.5s infinite alternate; /* Effetto pulsante */
+  animation: glow 1.5s infinite alternate;
+  /* Effetto pulsante */
 }
 
-.card a{
+.card a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
 /*-----------------------------------*/
@@ -60,7 +63,7 @@
   background: url(/assets/immaginiHome/2.jpg);
   background-size: cover;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   position: relative;
 }
 
@@ -125,15 +128,15 @@
   position: relative;
 }
 
-.desktop{
+.desktop {
   display: block;
 }
 
-.mobile{
+.mobile {
   display: none;
 }
 
-h1{
+h1 {
   color: rgb(255, 255, 255);
   text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
   font-family: overwatch2;
@@ -143,7 +146,7 @@ h1{
   font-size: 5vw;
 }
 
-.card-title{
+.card-title {
   color: rgb(255, 255, 255);
   text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
   font-family: overwatch2;
@@ -153,16 +156,29 @@ h1{
   font-size: 3vw;
 }
 
+.sfondo2 {
+  background: url(/assets/immaginiProgetti/spazio.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 40vh;
+  background-position: center;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+
 /*-------------------------*/
 /*---MEDIA SCREEN---*/
 
-@media screen and (max-width:600px){
+@media screen and (max-width:600px) {
 
-  .desktop{
+  .desktop {
     display: none;
   }
 
-  .mobile{
+  .mobile {
     display: block;
   }
 
