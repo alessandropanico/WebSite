@@ -16,6 +16,7 @@ import { SliderProgettiComponent } from './shared/slider/slider-progetti/slider-
 import { CodingComponent } from './pagine/progetti/coding/coding/coding.component';
 import { YoutubeComponent } from './pagine/progetti/coding/youtube/youtube.component';
 import { JusticeComponent } from './pagine/progetti/coding/justice/justice.component';
+import { ErrorPageComponent } from './pagine/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { JusticeComponent } from './pagine/progetti/coding/justice/justice.compo
     CodingComponent,
     YoutubeComponent,
     JusticeComponent,
+    ErrorPageComponent,
 
   ],
   imports: [

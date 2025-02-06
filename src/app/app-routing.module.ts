@@ -7,6 +7,7 @@ import { ProgettiComponent } from './pagine/progetti/progetti.component';
 import { CodingComponent } from './pagine/progetti/coding/coding/coding.component';
 import { YoutubeComponent } from './pagine/progetti/coding/youtube/youtube.component';
 import { JusticeComponent } from './pagine/progetti/coding/justice/justice.component';
+import { ErrorPageComponent } from './pagine/error-page/error-page.component';
 
 const routes: Routes = [
 
@@ -21,6 +22,10 @@ const routes: Routes = [
   { path: 'coding', component:CodingComponent},
   { path: 'youtube', component:YoutubeComponent},
   { path: 'justice', component: JusticeComponent},
+
+
+  //Error page
+  { path:'**',component:ErrorPageComponent},
 
 ];
 
