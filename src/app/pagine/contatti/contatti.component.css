@@ -1,0 +1,21 @@
+.sfondo {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Copre l'intera area senza distorsioni */
+  z-index: -2; /* Assicura che il video stia dietro il contenuto */
+}
+
+.imgIcon{
+  width: 15vw;
+  height: auto;
+}
