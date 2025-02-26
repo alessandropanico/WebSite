@@ -27,3 +27,13 @@
   height: 100vh;
   position: relative;
 }
+
+h1 {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
+  font-family: overwatch2;
+  text-align: left;
+  line-height: 1;
+  z-index: 10;
+  font-size: 5vw;
+}
