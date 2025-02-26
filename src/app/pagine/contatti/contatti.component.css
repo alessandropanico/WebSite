@@ -39,9 +39,10 @@ h1 {
 }
 
 
-
-.cornice{
-  width: 75%;
+.cornice {
+  width: 85%;
+  animation: glow 2.5s infinite alternate; /* Aggiungi l'animazione alla cornice */
+  margin-bottom: 5vh;
 }
 
 .cornice-container {
@@ -51,11 +52,60 @@ h1 {
   align-items: center; /* Allinea il contenuto verticalmente al centro */
 }
 
+/* Effetto bagliore sull'immagine */
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #bb7e29); /* Riduci ulteriormente l'intensità del bagliore */
+  }
+
+  100% {
+    filter: drop-shadow(0 0 10px #bb7e29) drop-shadow(0 0 15px #bb7e29); /* Riduci ulteriormente l'intensità del bagliore */
+  }
+}
+
+.corniceText{
+  background-color: transparent;
+  border: solid 0.5vw #F3C026;
+  padding: 1vw;
+  width: 35vw;
+  height: 40vh;
+  display: flex;
+  position: absolute;
+  font-style: normal;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Aggiungi un effetto luminoso dietro il testo */
+.corniceText::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: solid 0.5vw #F3C026;
+  filter: blur(5px);
+  animation: glow 2.5s infinite alternate; /* Applicare l'animazione solo qui */
+  z-index: -1; /* Mantiene l'effetto luminoso dietro il contenuto */
+}
 
 .textContatti {
   color: white;
-  position: absolute; /* Rimuovi questa riga */
-  text-align: center; /* Centra il testo */
+  position: relative; /* Rimuovi questa riga */
   z-index: 1; /* Mantiene il testo sopra l'immagine */
 }
 
+ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  font-size: 3vw;
+  line-height: 1.2;
+  animation: none;
+
+}
