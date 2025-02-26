@@ -10,7 +10,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ChisonoComponent } from './pagine/chisono/chisono.component';
 import { ProgettiComponent } from './pagine/progetti/progetti.component';
 import { ContattiComponent } from './pagine/contatti/contatti.component';
-import { ProvaComponent } from './shared/prova/prova.component';
 import { SliderHomeComponent } from './shared/slider/slider-home/slider-home.component';
 import { SliderProgettiComponent } from './shared/slider/slider-progetti/slider-progetti.component';
 import { CodingComponent } from './pagine/progetti/coding/coding/coding.component';
@@ -27,7 +26,6 @@ import { ErrorPageComponent } from './pagine/error-page/error-page.component';
     ChisonoComponent,
     ProgettiComponent,
     ContattiComponent,
-    ProvaComponent,
     SliderHomeComponent,
     SliderProgettiComponent,
     CodingComponent,
