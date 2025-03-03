@@ -1,24 +1,46 @@
-<div *ngIf="isSwiperActive && slides.length > 0" class="contPers">
-  <swiper-container [breakpoints]="breakpoints"
-                    [autoplay]="autoplay"
-                    [loop]="loop"
-                    [loop-additional-slides]="2"
-                    [navigation]="true"
-                    [ngStyle]="{
+<div class="desktop">
+  <div class="d-flex justify-content-center">
+    <div *ngIf="isSwiperActive && slides.length > 0" class="contPers">
+      <swiper-container [breakpoints]="breakpoints" [autoplay]="autoplay" [loop]="loop" [loop-additional-slides]="2"
+        [navigation]="true" [ngStyle]="{
                       '--swiper-navigation-color': '#f3c026',
                       '--swiper-navigation-size': '5vw',
                       '--swiper-navigation-left': '2vw',
                       '--swiper-navigation-right': '2vw',
                       '--swiper-navigation-sides-offset': '2vw'
-                    }"
-                    autoplay="true">
-    <swiper-slide *ngFor="let slide of slides; let i = index">
-      <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText">
-      <!-- Contenitore per titolo e descrizione -->
-      <div class="text-container container">
-        <h3 class="slide-title">{{ slide.title }}</h3>
-        <p class="slide-description">{{ slide.description }}</p>
-      </div>
-    </swiper-slide>
-  </swiper-container>
+                    }" autoplay="true">
+        <swiper-slide *ngFor="let slide of slides; let i = index">
+          <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText">
+          <!-- Contenitore per titolo e descrizione -->
+          <div class="text-container container">
+            <h3 class="slide-title">{{ slide.title }}</h3>
+            <p class="slide-description">{{ slide.description }}</p>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+  </div>
+</div>
+
+<!-------------------------->
+
+
+<div class="mobile">
+  <div *ngIf="isSwiperActive && slides.length > 0" class="contPers">
+    <swiper-container [breakpoints]="breakpoints" [autoplay]="autoplay" [loop]="loop" [loop-additional-slides]="2"
+      [navigation]="false" autoplay="true">
+      <swiper-slide *ngFor="let slide of slides; let i = index">
+        <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText">
+        <!-- Contenitore per titolo e descrizione -->
+        <div class="d-flex justify-content-center">
+          <div class="text-container">
+            <h3 class="slide-title">{{ slide.title }}</h3>
+            <p class="slide-description">{{ slide.description }}</p>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+
 </div>

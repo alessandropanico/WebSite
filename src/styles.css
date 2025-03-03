@@ -1,8 +1,8 @@
-.desktop{
+.desktop {
   display: none;
 }
 
-.mobile{
+.mobile {
   display: block;
 }
 
@@ -55,9 +55,9 @@
   font-style: italic;
 }
 
-.nome{
+.nome {
   font-size: 1.2vw;
-  font-family: "Poppins",Helvetica,Arial,sans-serif,"Microsoft YaHei";
+  font-family: "Poppins", Helvetica, Arial, sans-serif, "Microsoft YaHei";
   line-height: 1;
   z-index: 9999;
   color: white;
@@ -122,11 +122,12 @@
   z-index: -1;
   /* Posiziona il bagliore sotto la linea */
 }
+
 /*--------------------------------------*/
 
 .myButton {
   background-image: linear-gradient(to right, #C02425 0%, #F0CB35 51%, #C02425 100%);
-  border:none;
+  border: none;
   font-family: overwatch2;
   margin: 10px;
   padding: 15px 45px;
@@ -137,13 +138,14 @@
   color: white;
   display: block;
   font-size: 2.8vw;
+  margin-bottom: 5vh;
 }
 
 .myButton:hover {
   background-position: right center;
   color: #ffffff;
   text-decoration: none;
-  border:none;
+  border: none;
 }
 
 .normal {
@@ -189,7 +191,7 @@ body::-webkit-scrollbar-thumb {
 
 /*-------------------------*/
 
- body:has(.cursor-image) {
+body:has(.cursor-image) {
   cursor: url("./assets/cursor.svg"), auto
 }
 
@@ -256,14 +258,48 @@ body::-webkit-scrollbar-thumb {
 
 /*-----------------------------------*/
 /*---MOBILE---*/
-@media screen and (max-width:600px){
+@media screen and (max-width:600px) {
 
-  .desktop{
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
     display: block;
   }
 
-  .mobile{
-    display: none;
+  .spazio {
+    margin-top: 15vh;
+  }
+
+  .spazio2 {
+    margin-top: 5vh;
+  }
+
+  .spazio3 {
+    margin-top: 5vh;
+  }
+
+  .myButton {
+    background-image: linear-gradient(to right, #C02425 0%, #F0CB35 51%, #C02425 100%);
+    border: none;
+    font-family: overwatch2;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    display: block;
+    font-size: 10vw;
+    margin-bottom: 5vh;
+  }
+
+  .fa-brands {
+    font-size: 10vw;
+    cursor: pointer;
+    margin-left: 1vw;
   }
 
 }

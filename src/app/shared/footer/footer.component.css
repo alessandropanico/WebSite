@@ -6,7 +6,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 60vh; /* Assicura che il footer copra l'intero viewport */
+  height: 60vh;
+  /* Assicura che il footer copra l'intero viewport */
 }
 
 .nomeSection {
@@ -70,4 +71,64 @@
   font-size: 2.5vw;
   cursor: pointer;
   margin-left: 1vw;
+}
+
+
+@media screen and (max-width:600px) {
+
+  .sfondo{
+    height: 72vh;
+  }
+
+  .titolo {
+    font-size: 10vw;
+    font-family: akira;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    line-height: 1;
+    z-index: 10;
+  }
+
+  .titolo2 {
+    font-size: 15vw;
+    font-family: overwatch2;
+    text-align: center;
+    color: white;
+    line-height: 1;
+    z-index: 10;
+    font-style: italic;
+  }
+
+  .fa-brands {
+    font-size: 10vw;
+    cursor: pointer;
+    margin-left: 1vw;
+  }
+
+  .cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 900;
+    position: relative;
+    flex-direction: column;
+    gap: 5vw;
+  }
+
+  .nome {
+    font-size: 7vw;
+    font-family: "Poppins", Helvetica, Arial, sans-serif, "Microsoft YaHei";
+    line-height: 1;
+    text-align: center;
+    z-index: 9999;
+    color: white;
+    position: relative;
+  }
+
+  .bordoArrow {
+    width: 20vw;
+    height: auto;
+    font-size: 15vw;
+    }
+
 }
