@@ -259,27 +259,27 @@ a {
     padding: 2.5vw;
   }
 
-  /* Sidebar Menu */
   .sidebar {
     position: fixed;
     top: 0;
-    left: -100%;
-    /* Fuori dalla vista inizialmente */
+    left: 0; /* Posizione di partenza */
+    transform: translateX(-100%); /* Fuori dalla vista inizialmente */
     width: 70vw;
     height: 130vh;
     background-color: rgb(0 0 0 / 95%);
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    transition: left 0.3s ease;
+    transition: transform 0.3s ease; /* Animazione più fluida */
     display: flex;
     flex-direction: column;
   }
 
-  /* Quando il menu è attivo, viene mostrato */
+  /* Quando il menu è attivo, spostalo dentro la vista */
   .sidebar.active {
-    left: 0;
+    transform: translateX(0); /* Menu visibile */
     border-right: solid 3px #bb7e29;
   }
+
 
   /* Contenitore dell'hamburger */
   .hamburger {

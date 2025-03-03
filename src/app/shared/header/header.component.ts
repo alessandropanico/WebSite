@@ -264,23 +264,22 @@ export class HeaderComponent {
     this.isDropdownVisible = !this.isDropdownVisible;
 
   }
-//-----------------------------------------
+  //-----------------------------------------
 
-isMenuOpen: boolean = false; // Stato del menu
-startX: number = 0; // Posizione iniziale X per swipe
-currentX: number = 0; // Posizione attuale X per swipe
+  isMenuOpen: boolean = false; // Stato del menu
+  startX: number = 0; // Posizione iniziale X per swipe
+  currentX: number = 0; // Posizione attuale X per swipe
 
 
- // Metodo per aprire/chiudere il menu
- toggleMenu() {
-  this.isMenuOpen = !this.isMenuOpen;
-}
+  // Metodo per aprire/chiudere il menu
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
-closeMenu() {
-  this.isMenuOpen = false;
-  this.isDropdownVisible = false;
-
-}
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.isDropdownVisible = false;
+  }
 
 
 }
