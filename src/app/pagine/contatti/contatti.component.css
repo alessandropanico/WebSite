@@ -28,6 +28,11 @@
   position: relative;
 }
 
+.arrow{
+  margin-top: 1vh;
+  width: 8vw;
+}
+
 h1 {
   color: rgb(255, 255, 255);
   text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
