@@ -100,7 +100,7 @@ swiper-slide {
 .slide-description {
   font-size: 1vw;
   color: rgb(255, 255, 255);
-  text-align: justify;
+  text-align: left;
   margin-bottom: 5vh;
 }
 
@@ -130,7 +130,7 @@ swiper-slide {
   .slide-description {
     font-size: 5vw;
     color: rgb(255, 255, 255);
-    text-align: justify;
+    text-align: left;
   }
 
 
