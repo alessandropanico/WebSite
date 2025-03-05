@@ -14,8 +14,7 @@ swiper-slide {
   width: 100% !important;
   /* Assicura che la larghezza sia il 100% */
   justify-content: center;
-  display: flex
-;
+  display: flex;
 
   /* Assicurati che l'immagine occupi tutto lo spazio */
   .mio {
@@ -104,36 +103,6 @@ swiper-slide {
   color: rgb(255, 255, 255);
   text-align: left;
 }
-
-
-/*/
-.sfondo {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.588);
-  z-index: -1;
-}
-
 
 
 /*-----------------------------------*/
@@ -250,7 +219,29 @@ h1 {
     position: relative;
   }
 
+  swiper-slide {
+    text-align: center;
+    border-radius: 24px;
+    position: relative;
+    width: 100% !important;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 5vh;
+}
 
+h1 {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 4px 10px hsla(0, 0%, 100%, .4);
+  font-family: overwatch2;
+  text-align: left;
+  line-height: 1;
+  z-index: 10;
+  font-size: 10vw;
+}
 
+.card-text{
+  font-size: 4vw;
+  text-align: left;
+}
 
 }

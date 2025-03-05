@@ -62,6 +62,7 @@
   z-index: 9999;
   color: white;
   position: relative;
+  margin-bottom: 3vh;
 }
 
 /*----------------------------*/
@@ -300,6 +301,10 @@ body:has(.cursor-image) {
     font-size: 10vw;
     cursor: pointer;
     margin-left: 1vw;
+  }
+
+  .nome{
+    margin-bottom: 0vh;
   }
 
 }
