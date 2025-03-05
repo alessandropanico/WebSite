@@ -229,7 +229,7 @@ h1 {
     width: 20vw;
     height: auto;
     margin-bottom: 2vh;
-    animation: _ngcontent-ng-c4236082470_glow 1.5s infinite alternate;
+    animation: glow 1.5s infinite alternate;
   }
 
   .contenitore{
