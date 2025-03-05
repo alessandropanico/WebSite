@@ -90,7 +90,7 @@
   }
 
   .titolo2 {
-    font-size: 15vw;
+    font-size: 12vw;
     font-family: overwatch2;
     text-align: center;
     color: white;
@@ -114,6 +114,15 @@
     flex-direction: column;
     gap: 5vw;
   }
+
+  .contSocial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
+    position: relative;
+    margin-top: 2vh;
+}
 
   .nome {
     font-size: 7vw;
