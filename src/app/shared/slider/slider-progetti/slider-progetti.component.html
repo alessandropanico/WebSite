@@ -6,15 +6,18 @@
                     '--swiper-navigation-right': '2vw',
                     '--swiper-navigation-sides-offset': '2vw'
                   }" autoplay="false">
+
   <swiper-slide *ngFor="let slide of slides; let i = index">
-    <div class="card">
-      <div class="img-hover-zoom">
-        <img [src]="slide.imgSrc" class="immCard" [alt]="slide.altText">
+
+      <div class="card" (click)="navigateTo(slide.route)">
+        <div class="img-hover-zoom">
+          <img [src]="slide.imgSrc" class="immCard" [alt]="slide.altText">
+        </div>
+        <div class="card-body">
+          <h1 class="card-title">{{ slide.title }}</h1>
+          <p class="card-text">{{ slide.description }}</p>
+        </div>
       </div>
-      <div class="card-body">
-        <h1 class="card-title">{{ slide.title }}</h1>
-        <p class="card-text">{{ slide.description }}</p>
-      </div>
-    </div>
+
   </swiper-slide>
 </swiper-container>
