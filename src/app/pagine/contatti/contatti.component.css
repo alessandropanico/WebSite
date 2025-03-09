@@ -134,7 +134,7 @@ a {
   position: relative;
   left: 0;
   line-height: 1.7;
-  font-family: overwatch;
+  font-family: akira;
   color: #e3f2ff;
   text-shadow: 0 0 0.3vw #336cec;
   transform-origin: bottom;
@@ -219,14 +219,13 @@ a {
 
   .textContatti a {
     text-decoration: none;
-    font-size: 6vw;
+    font-size: 5vw;
     line-height: 1.2;
     animation: none;
   }
 
   .textContatti{
     color: white;
-    position: relative;
     z-index: 1;
     position: absolute;
     margin-top: -7vh;
