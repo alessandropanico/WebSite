@@ -79,7 +79,7 @@ h1 {
   border: solid 0.5vw #F3C026;
   padding: 1vw;
   width: 35vw;
-  height: 40vh;
+  height: 44vh;
   display: flex;
   position: absolute;
   font-family: overwatch;
@@ -106,6 +106,7 @@ h1 {
   position: relative;
   z-index: 1;
   font-family: overwatch;
+  position: relative;
 }
 
 ul {
@@ -134,7 +135,6 @@ a {
   left: 0;
   line-height: 1.7;
   font-family: overwatch;
-  font-size: 24px;
   color: #e3f2ff;
   text-shadow: 0 0 0.3vw #336cec;
   transform-origin: bottom;
@@ -150,7 +150,6 @@ a {
   .mobile{
     display: block;
   }
-
 
   .sfondo {
     position: relative;
