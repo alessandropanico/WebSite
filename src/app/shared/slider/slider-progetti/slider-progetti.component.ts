@@ -39,14 +39,25 @@ export class SliderProgettiComponent implements OnInit, OnDestroy, AfterViewInit
     private router: Router,
     private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
-        { imgSrc: 'assets/immaginiSliderHome/programmazione.jpg', altText: 'Profilo 1', title: 'Card 1', description: 'Descrizione della prima card' },
-        { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Profilo 2', title: 'Card 2', description: 'Descrizione della seconda card' },
-        { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Profilo 3', title: 'Card 3', description: 'Descrizione della terza card' },
+        {
+          imgSrc: 'assets/immaginiSliderHome/programmazione.jpg', altText: 'Profilo 1', title: 'Web Developer',
+          description: 'Sono un web developer ed amo il mio lavoro! Ti serve un sito? Vieni a vedere cosa ti offro ;)'
+        },
+
+        {
+          imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Profilo 2', title: 'YouTube',
+          description: 'Scopri il mio canale Youtube! Iscriviti per supportarmi a continuare con più contenuti!'
+        },
+
+        {
+          imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Profilo 3', title: 'Justice',
+          description: 'Justice è un’opera che si basa su me stesso. Io, Dio, la vita intera. Un’opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.'
+        },
       ];
 
       // Duplichiamo le card per avere più elementi nello slider

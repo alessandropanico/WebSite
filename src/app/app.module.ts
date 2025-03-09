@@ -16,6 +16,7 @@ import { CodingComponent } from './pagine/progetti/coding/coding/coding.componen
 import { YoutubeComponent } from './pagine/progetti/coding/youtube/youtube.component';
 import { JusticeComponent } from './pagine/progetti/coding/justice/justice.component';
 import { ErrorPageComponent } from './pagine/error-page/error-page.component';
+import { ProgressComponent } from './pagine/progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ErrorPageComponent } from './pagine/error-page/error-page.component';
     YoutubeComponent,
     JusticeComponent,
     ErrorPageComponent,
+    ProgressComponent,
 
   ],
   imports: [
