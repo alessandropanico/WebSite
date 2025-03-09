@@ -17,6 +17,7 @@ import { YoutubeComponent } from './pagine/progetti/coding/youtube/youtube.compo
 import { JusticeComponent } from './pagine/progetti/coding/justice/justice.component';
 import { ErrorPageComponent } from './pagine/error-page/error-page.component';
 import { ProgressComponent } from './pagine/progress/progress.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,10 +41,14 @@ import { ProgressComponent } from './pagine/progress/progress.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(),
+    provideHttpClient(withFetch()) // Abilita Fetch API
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Aggiungi questa riga
 
