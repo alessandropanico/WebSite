@@ -10,6 +10,8 @@ interface Slide {
   altText: string;
   title: string;
   description: string;
+  route: string; // Aggiunto campo route
+
 }
 
 @Component({
@@ -44,11 +46,14 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
     if (isPlatformBrowser(this.platformId)) {
       const originalSlides: Slide[] = [
         { imgSrc: 'assets/immaginiSliderHome/programmazione.jpg', altText: 'Slide 2', title: 'Web Developer',
-          description: 'Sono un web developer ed amo il mio lavoro! Ti serve un sito? Vieni a vedere cosa ti offro ;)' },
+          description: 'Sono un web developer ed amo il mio lavoro! Ti serve un sito? Vieni a vedere cosa ti offro ;)',
+          route: '/progetti' },
         { imgSrc: 'assets/immaginiSliderHome/youtube.jpg', altText: 'Slide 2', title: "YouTube",
-          description: 'Scopri il mio canale Youtube! Iscriviti per supportarmi a continuare con più contenuti!' },
+          description: 'Scopri il mio canale Youtube! Iscriviti per supportarmi a continuare con più contenuti!',
+          route: '/progetti' },
         { imgSrc: 'assets/immaginiSliderHome/justice.jpg', altText: 'Slide 1', title: 'Justice',
-           description: 'Justice è un’opera che si basa su me stesso. Io, Dio, la vita intera. Un’opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.' },
+           description: 'Justice è un’opera che si basa su me stesso. Io, Dio, la vita intera. Un’opera che racchiude tutta la mia vita, tutti i miei dolori, gioie, difficoltà e visione della vita stessa. Prenderà vita. Deve farlo.',
+           route: '/progetti' },
       ];
 
       // Inizializza gli slides
@@ -84,5 +89,9 @@ export class SliderHomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.navigationSubscription?.unsubscribe(); // ✅ Evitiamo memory leaks con `?.`
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
   }
 }

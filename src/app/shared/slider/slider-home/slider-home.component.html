@@ -10,7 +10,7 @@
                       '--swiper-navigation-sides-offset': '2vw'
                     }" autoplay="true">
         <swiper-slide *ngFor="let slide of slides; let i = index">
-          <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText">
+          <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText"  (click)="navigateTo(slide.route)">
           <!-- Contenitore per titolo e descrizione -->
           <div class="text-container container">
             <h3 class="slide-title">{{ slide.title }}</h3>
@@ -30,7 +30,7 @@
     <swiper-container [breakpoints]="breakpoints" [autoplay]="autoplay" [loop]="loop" [loop-additional-slides]="2"
       [navigation]="false" autoplay="true">
       <swiper-slide *ngFor="let slide of slides; let i = index">
-        <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText">
+        <img class="mio" [src]="slide.imgSrc" [alt]="slide.altText"  (click)="navigateTo(slide.route)">
         <!-- Contenitore per titolo e descrizione -->
         <div class="d-flex justify-content-center">
           <div class="text-container">
