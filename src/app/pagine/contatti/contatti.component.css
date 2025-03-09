@@ -129,6 +129,18 @@ a {
   display: none;
 }
 
+.normal {
+  position: relative;
+  left: 0;
+  line-height: 1.7;
+  font-family: overwatch;
+  font-size: 24px;
+  color: #e3f2ff;
+  text-shadow: 0 0 0.3vw #336cec;
+  transform-origin: bottom;
+  transition: none;
+}
+
 @media screen and (max-width:600px) {
 
   .desktop{
